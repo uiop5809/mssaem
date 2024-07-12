@@ -1,5 +1,12 @@
 import type { Config } from 'tailwindcss'
 
+const pxToRem = (px: number, base: number = 16): string => `${px / base}rem`
+
+const generateRange = (start: number, end: number): number[] => {
+  const length = end - start + 1
+  return Array.from({ length }, (_, i) => start + i)
+}
+
 const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -38,15 +45,15 @@ const config: Config = {
       serif: ['Merriweather', 'serif'],
     },
     sizes: {
-      HEROTITLE: '1.5rem',
-      BIGTITLE: '1.4rem',
-      TITLE1: '1.3rem',
-      TITLE2: '1.2rem',
-      TITLE3: '1rem',
-      HEADLINE: '0.9rem',
-      BODY: '0.8rem',
-      FOOTNOTE: '0.7rem',
-      CAPTION: '0.6rem',
+      HEROTITLE: '38px',
+      BIGTITLE: '32px',
+      TITLE1: '28px',
+      TITLE2: '22px',
+      TITLE3: '18px',
+      HEADLINE: '16px',
+      BODY: '16px',
+      FOOTNOTE: '14px',
+      CAPTION: '12px',
     },
     weights: {
       REGULAR: 400,
@@ -61,6 +68,12 @@ const config: Config = {
         lg: '4rem',
         xl: '5rem',
       },
+    },
+    spacing: {
+      ...generateRange(1, 100).reduce<Record<string, string>>((acc, px) => {
+        acc[`${px}pxr`] = pxToRem(px)
+        return acc
+      }, {}),
     },
   },
   plugins: [],
