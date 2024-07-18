@@ -10,6 +10,22 @@
     "project": "./tsconfig.json"
   },
   "rules": {
-    "react/react-in-jsx-scope": "off"
+    // react import 없이 사용
+    "react/react-in-jsx-scope": "off",
+    // storybook 개발 의존성에 포함된 패키지 import 에러 x
+    "import/no-extraneous-dependencies": [
+      "error",
+      { "devDependencies": ["**/*.stories.tsx"] }
+    ],
+    // 화살표 함수 사용
+    "react/function-component-definition": [
+      "off",
+      {
+        "namedComponents": "function-declaration",
+        "unnamedComponents": "function-expression"
+      }
+    ],
+    // props를 직접적으로 spread 하는 것
+    "react/jsx-props-no-spreading": "off"
   }
 }
