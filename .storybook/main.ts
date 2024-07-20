@@ -16,22 +16,18 @@ const config: StorybookConfig = {
     options: {},
   },
   staticDirs: ['..\\public'],
-  webpackFinal: async (config) => {
-    config.resolve = config.resolve || {}
-    config.resolve.alias = config.resolve.alias || {}
-    config.resolve.alias['@'] = path.resolve(__dirname, '../src/')
-
-    config.module = config.module || {}
-    config.module.rules = config.module.rules || []
-
-    config.module.rules.push({
-      test: /\.css$/,
-      use: ['style-loader', 'css-loader', 'postcss-loader'],
-      include: path.resolve(__dirname, '../'),
-    })
-
+  webpackFinal: (config) => {
+    config.resolve!!.alias = {
+      ...config.resolve?.alias,
+      '@': [path.resolve(__dirname, '../src/'), path.resolve(__dirname, '../')],
+    }
+    config.resolve!!.roots = [
+      path.resolve(__dirname, '../public'),
+      'node_modules',
+    ]
     return config
   },
+
   docs: {
     autodocs: true,
   },
