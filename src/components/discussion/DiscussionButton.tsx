@@ -3,11 +3,21 @@
 import Image from 'next/image'
 import clsx from 'clsx'
 
+const DiscussionButtonTheme = {
+  size: {
+    small: 'min-h-30', // home
+    large: 'min-h-54', // discussion
+  },
+}
+
+export type Size = keyof typeof DiscussionButtonTheme.size
+
 export interface DiscussionButtonProps {
   text: string
   imgUrl?: string
   onClick: () => void
   disabled?: boolean
+  size: Size
 }
 
 const DiscussionButton = ({
@@ -15,10 +25,11 @@ const DiscussionButton = ({
   imgUrl,
   onClick,
   disabled,
+  size,
 }: DiscussionButtonProps) => (
   <button
     type="submit"
-    className="flex flex-col justify-center items-center border-gray4 border-1 rounded-7.5 gap-2.5 p-5 bg-white text-center w-full min-h-54"
+    className={`flex flex-col justify-center items-center border-gray4 border-1 rounded-7.5 gap-2.5 p-5 bg-white text-center w-full ${DiscussionButtonTheme.size[size]}`}
     onClick={onClick}
     disabled={disabled}
   >

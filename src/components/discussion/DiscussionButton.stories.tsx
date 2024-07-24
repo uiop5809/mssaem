@@ -16,17 +16,36 @@ const Template: StoryFn<DiscussionButtonProps> = (
   args: DiscussionButtonProps,
 ) => <DiscussionButton {...args} />
 
-export const Primary = Template.bind({})
-Primary.args = {
+export const SmallPrimary = Template.bind({})
+SmallPrimary.args = {
   text: '글쓰기',
   onClick: () => alert('clicked'),
   disabled: false,
+  size: 'small',
 }
 
-export const ImageButton = Template.bind({})
-ImageButton.args = {
+export const SmallImageButton = Template.bind({})
+SmallImageButton.args = {
   text: '글쓰기',
   imgUrl: '/images/common/thumbnail.svg',
   onClick: () => alert('clicked'),
   disabled: false,
+  size: 'small',
+}
+
+export const LargePrimary = Template.bind({})
+LargePrimary.args = {
+  text: '글쓰기',
+  onClick: () => alert('clicked'),
+  disabled: false,
+  size: 'large',
+}
+
+export const LargeImageButton = Template.bind({})
+LargeImageButton.args = {
+  text: '글쓰기',
+  imgUrl: '/images/common/thumbnail.svg',
+  onClick: () => alert('clicked'),
+  disabled: false,
+  size: 'large',
 }
