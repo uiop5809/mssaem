@@ -1,5 +1,6 @@
 'use client'
 
+import React, { useState } from 'react'
 import Image from 'next/image'
 import clsx from 'clsx'
 
@@ -13,40 +14,72 @@ const DiscussionButtonTheme = {
 export type Size = keyof typeof DiscussionButtonTheme.size
 
 export interface DiscussionButtonProps {
-  text: string
+  content: string
   imgUrl?: string
-  onClick: () => void
+  onClick?: () => void
   disabled?: boolean
   size: Size
+  selectedPercent?: number
+  selected?: boolean
 }
 
 const DiscussionButton = ({
-  text,
+  content,
   imgUrl,
-  onClick,
-  disabled,
   size,
-}: DiscussionButtonProps) => (
-  <button
-    type="submit"
-    className={`flex flex-col justify-center items-center border-gray4 border-1 rounded-7.5 gap-2.5 p-5 bg-white text-center w-full ${DiscussionButtonTheme.size[size]}`}
-    onClick={onClick}
-    disabled={disabled}
-  >
-    {imgUrl && <Image src={imgUrl} alt="thumbnail" width={175} height={175} />}
-    <p
-      className={clsx('text-body font-regular', {
-        'text-title1 font-bold': !imgUrl,
-      })}
+  selectedPercent,
+  selected: initialSelected = false,
+  disabled: initialDisabled = false,
+  onClick,
+}: DiscussionButtonProps) => {
+  const [selected, setSelected] = useState(initialSelected)
+  const [disabled, setDisabled] = useState(initialDisabled)
+
+  const handleClick = () => {
+    setSelected(true)
+    setDisabled(true)
+    if (typeof onClick === 'function') {
+      onClick()
+    }
+  }
+
+  return (
+    <button
+      type="submit"
+      className={clsx(
+        'flex flex-col justify-center items-center border-gray4 border-1 rounded-7.5 gap-2.5 p-5 text-center w-full',
+        DiscussionButtonTheme.size[size],
+        {
+          'bg-main2 text-white': selected,
+          'bg-white text-black': !selected,
+        },
+      )}
+      onClick={handleClick}
+      disabled={disabled}
     >
-      {text}
-    </p>
-  </button>
-)
+      {!selected && imgUrl && (
+        <Image src={imgUrl} alt="thumbnail" width={175} height={175} />
+      )}
+      <div>
+        <p
+          className={clsx('flex flex-col gap-3', 'text-body font-regular', {
+            'text-title1 font-bold': selected || !imgUrl,
+          })}
+        >
+          {content}
+        </p>
+        {selected && <p className="text-title2">{selectedPercent}%</p>}
+      </div>
+    </button>
+  )
+}
 
 DiscussionButton.defaultProps = {
   imgUrl: undefined,
   disabled: false,
+  selectedPercent: 0,
+  selected: false,
+  onClick: () => {},
 }
 
 export default DiscussionButton
