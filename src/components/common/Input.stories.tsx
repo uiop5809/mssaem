@@ -8,13 +8,13 @@ export default {
     color: {
       control: {
         type: 'select',
-        options: ['gray'],
+        options: ['gray', 'purple'],
       },
     },
     size: {
       control: {
         type: 'select',
-        options: ['medium'],
+        options: ['medium', 'large'],
       },
     },
   },
@@ -27,4 +27,11 @@ MediumInput.args = {
   value: '닉네임',
   color: 'gray',
   size: 'medium',
+}
+
+export const LargeInput = Template.bind({})
+LargeInput.args = {
+  placeholder: '댓글을 작성하려면 로그인 해주세요',
+  color: 'purple',
+  size: 'large',
 }
