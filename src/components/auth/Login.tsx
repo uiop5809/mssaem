@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router'
-import { Color } from './Button'
-import Profile from './Profile'
+import { Color } from '../common/Button'
+import Profile from '../common/Profile'
 
 export interface LoginProps {
-  url: string
-  name: string
+  profileImgUrl: string
+  nickName: string
   mbti: Color
   badge?: string
 }
@@ -16,7 +16,7 @@ const menuItems = [
   { id: 'profile', label: '프로필 설정', path: '/profile-settings' },
 ]
 
-const Login = ({ url, name, mbti, badge }: LoginProps) => {
+const Login = ({ profileImgUrl, nickName, mbti, badge }: LoginProps) => {
   const router = useRouter()
 
   return (
@@ -25,7 +25,12 @@ const Login = ({ url, name, mbti, badge }: LoginProps) => {
         <p className="text-gray2 text-caption cursor-pointer">로그아웃</p>
       </div>
       <div className="flex flex-col gap-4">
-        <Profile url={url} name={name} mbti={mbti} badge={badge} />
+        <Profile
+          profileImgUrl={profileImgUrl}
+          nickName={nickName}
+          mbti={mbti}
+          badge={badge}
+        />
         <ul className="flex justify-between w-full text-gray2 text-caption">
           {menuItems.map((item, index) => (
             <div key={item.id} className="flex items-center">

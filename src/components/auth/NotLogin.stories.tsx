@@ -1,8 +1,8 @@
-import NotLogin from '@/components/common/NotLogin'
+import NotLogin from '@/components/auth/NotLogin'
 import { Meta, StoryFn } from '@storybook/react'
 
 export default {
-  title: 'Common/NotLogin',
+  title: 'Auth/NotLogin',
   component: NotLogin,
 } as Meta
 

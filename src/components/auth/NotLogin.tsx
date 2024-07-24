@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import Button from './Button'
+import Button from '../common/Button'
 
 const menuItems = [
   { id: '/findId', label: '아이디 찾기', path: '/findId' },
