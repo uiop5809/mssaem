@@ -56,10 +56,10 @@ const config: Config = {
         lg: '976px',
         xl: '1440px',
       },
-
       fontFamily: {
         sans: ['Graphik', 'sans-serif'],
         serif: ['Merriweather', 'serif'],
+        pretendard: ['var(--font-pretendard)'],
       },
       fontSize: {
         herotitle: '38px',
