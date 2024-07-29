@@ -20,7 +20,7 @@ const Container = ({ children, color }: ContainerProps) => (
   <div
     className={`w-full h-full px-7.5 py-8.75 rounded-7.5 ${ContainerTheme.color[color]}`}
   >
-    children{children}
+    {children}
   </div>
 )
 

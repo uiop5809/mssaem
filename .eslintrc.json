@@ -26,6 +26,8 @@
       }
     ],
     // props를 직접적으로 spread 하는 것
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    // 배열에 key로 index 사용
+    "react/no-array-index-key": "off"
   }
 }

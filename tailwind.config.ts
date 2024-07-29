@@ -31,6 +31,7 @@ const config: Config = {
         gray3: '#A7A7A7',
         gray4: '#D4D3D3',
         gray5: '#F5F5F5',
+        gray6: '#E0E0E0',
 
         enfp: '#F9CAF2',
         enfj: '#FCE8CA',
@@ -71,12 +72,6 @@ const config: Config = {
         footnote: '14px',
         caption: '12px',
       },
-      weights: {
-        regular: 400,
-        medium: 500,
-        semibold: 600,
-        bold: 700,
-      },
       spacing: {
         '0.75': '3px',
         '3.25': '13px',
@@ -92,11 +87,34 @@ const config: Config = {
         }, {}),
       },
       borderRadius: {
+        '3.75': '15px',
         '7.5': '30px',
         '14': '56px',
       },
+      borderWidth: {
+        '1': '1px',
+      },
+      width: {
+        '24': '96px',
+      },
+      height: {
+        '24': '96px',
+      },
+      minHeight: {
+        '30': '120px',
+        '54': '212px',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }: any) {
+      addUtilities({
+        '.transparent-scrollbar': {
+          'scrollbar-color': 'transparent transparent',
+          'scrollbar-width': 'thin',
+        },
+      })
+    },
+  ],
 }
 export default config
