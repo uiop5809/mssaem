@@ -1,6 +1,6 @@
 'use client'
 
-import { useRouter } from 'next/router'
+import { usePathname, useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 
@@ -18,14 +18,15 @@ const extraCategories = [
 ]
 
 const Category = () => {
+  const pathname = usePathname()
   const router = useRouter()
   const [selected, setSelected] = useState<string | null>(null)
 
   useEffect(() => {
-    if (router.pathname) {
-      setSelected(router.pathname)
+    if (pathname) {
+      setSelected(pathname)
     }
-  }, [router.pathname])
+  }, [pathname])
 
   const handleClick = (path: string) => {
     setSelected(path)

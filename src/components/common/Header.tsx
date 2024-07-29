@@ -1,9 +1,12 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import React from 'react'
 import Image from 'next/image'
 import Button from './Button'
-import Category from './Category'
+
+// Category 컴포넌트를 동적으로 불러오기
+const Category = dynamic(() => import('./Category'), { ssr: false })
 
 const Header = () => (
   <header className="flex flex-col gap-8">
