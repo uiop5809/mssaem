@@ -49,6 +49,12 @@ const config: Config = {
         isfj: '#4B784B',
         estj: '#68676B',
         esfj: '#B8C4EE',
+
+        newbie: '#80E045',
+        mbtilano: '#00AF76',
+        mbtmi: '#FAA454',
+        mbtiadult: '#F85CA2',
+        funfun: '#00B5DC',
       },
       screens: {
         sm: '480px',
