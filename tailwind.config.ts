@@ -95,9 +95,11 @@ const config: Config = {
         '1': '1px',
       },
       width: {
+        '21': '84px',
         '24': '96px',
       },
       height: {
+        '21': '84px',
         '24': '96px',
         '44': '166px',
       },
