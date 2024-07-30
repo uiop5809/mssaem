@@ -99,6 +99,7 @@ const config: Config = {
       },
       height: {
         '24': '96px',
+        '44': '166px',
       },
       minHeight: {
         '30': '120px',
