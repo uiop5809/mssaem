@@ -1,7 +1,9 @@
 'use client'
 
+import { DiscussionOption } from '@/model/Discussion'
+import User from '@/model/User'
 import Image from 'next/image'
-import Profile, { ProfileProps } from '../common/Profile'
+import Profile from '../common/Profile'
 import Container from '../common/Container'
 import DiscussionButton from '../discussion/DiscussionButton'
 
@@ -11,8 +13,8 @@ export interface HotDiscussionProps {
   participantCount: number
   commentCount: number
   createdAt: string
-  memberSimpleInfo: ProfileProps
-  options: []
+  memberSimpleInfo: User
+  options: DiscussionOption[]
 }
 
 const HotDiscussion = ({
@@ -22,13 +24,14 @@ const HotDiscussion = ({
   commentCount,
   createdAt,
   memberSimpleInfo,
+  options,
 }: HotDiscussionProps) => (
   <Container color="purple">
     <div className="flex flex-col gap-6">
       <div className="flex flex-col justify-between gap-5">
         <div className="flex justify-between">
-          <Profile {...memberSimpleInfo} />
-          <div className="text-cpation text-gray2">{createdAt}</div>
+          <Profile user={memberSimpleInfo} createdAt={createdAt} />
+          <div className="text-caption text-gray2">{createdAt}</div>
         </div>
         <div className="flex flex-col gap-1">
           <p className="text-title3 font-bold">{title}</p>
@@ -37,9 +40,15 @@ const HotDiscussion = ({
       </div>
 
       <div className="flex flex-col gap-4">
-        <div className="flex justify-between gap-8">
-          <DiscussionButton content="ESFJ" onClick={() => {}} size="small" />
-          <DiscussionButton content="ISTJ" onClick={() => {}} size="small" />
+        <div className="grid grid-cols-2 gap-4">
+          {options.map((option) => (
+            <DiscussionButton
+              key={option.id}
+              content={option.content}
+              onClick={() => {}}
+              size="small"
+            />
+          ))}
         </div>
 
         <div className="flex justify-between">

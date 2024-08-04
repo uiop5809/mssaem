@@ -63,7 +63,7 @@ const DiscussionButton = ({
       <div>
         <p
           className={clsx('flex flex-col gap-3', 'text-body font-regular', {
-            'text-title1 font-bold': selected || !imgUrl,
+            'text-title2 font-bold': selected || !imgUrl,
           })}
         >
           {content}
