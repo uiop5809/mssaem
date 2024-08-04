@@ -1,11 +1,11 @@
 import type { Config } from 'tailwindcss'
 
-// 개발환경에선 px로, 프로덕션 환경에선 rem으로 변환
 const pxToRem = (px: number, base: number = 16): string => `${px / base}rem`
 
-const generateRange = (start: number, end: number): number[] => {
-  const length = end - start + 1
-  return Array.from({ length }, (_, i) => start + i)
+interface PluginAPI {
+  addUtilities: (utilities: Record<string, Record<string, string>>) => void
+  e: (className: string) => string
+  theme: (path: string, defaultValue?: any) => any
 }
 
 const config: Config = {
@@ -49,17 +49,17 @@ const config: Config = {
         isfj: '#4B784B',
         estj: '#68676B',
         esfj: '#B8C4EE',
-      },
-      screens: {
-        sm: '480px',
-        md: '768px',
-        lg: '976px',
-        xl: '1440px',
-      },
 
+        newbie: '#80E045',
+        mbtilano: '#00AF76',
+        mbtmi: '#FAA454',
+        mbtiadult: '#F85CA2',
+        funfun: '#00B5DC',
+      },
       fontFamily: {
         sans: ['Graphik', 'sans-serif'],
         serif: ['Merriweather', 'serif'],
+        pretendard: ['var(--font-pretendard)'],
       },
       fontSize: {
         herotitle: '38px',
@@ -72,8 +72,14 @@ const config: Config = {
         footnote: '14px',
         caption: '12px',
       },
+      screens: {
+        sm: '550px', // mobile
+        md: '770px', // tablet
+        lg: '850px', // desktop
+      },
       spacing: {
         '0.75': '3px',
+        '1.25': '5px',
         '3.25': '13px',
         '3.75': '15px',
         '4.5': '18px',
@@ -81,12 +87,11 @@ const config: Config = {
         '8.75': '35px',
         '68': '272px',
         '95': '380px',
-        ...generateRange(1, 100).reduce<Record<string, string>>((acc, px) => {
-          acc[`${px}pxr`] = pxToRem(px)
-          return acc
-        }, {}),
+        '5%': '5%',
+        '10%': '10%',
       },
       borderRadius: {
+        '2.5': '10px',
         '3.75': '15px',
         '7.5': '30px',
         '14': '56px',
@@ -95,10 +100,13 @@ const config: Config = {
         '1': '1px',
       },
       width: {
+        '21': '84px',
         '24': '96px',
       },
       height: {
+        '21': '84px',
         '24': '96px',
+        '44': '166px',
       },
       minHeight: {
         '30': '120px',
@@ -107,14 +115,23 @@ const config: Config = {
     },
   },
   plugins: [
-    function ({ addUtilities }: any) {
-      addUtilities({
-        '.transparent-scrollbar': {
-          'scrollbar-color': 'transparent transparent',
-          'scrollbar-width': 'thin',
-        },
-      })
+    function ({ addUtilities, e, theme }: PluginAPI) {
+      const remSpacing = Object.entries(theme('spacing')).reduce<
+        Record<string, Record<string, string>>
+      >((acc, [key, value]) => {
+        if (typeof value === 'string' && value.endsWith('px')) {
+          const remValue = pxToRem(parseInt(value, 10))
+          acc[`.${e(`p-${key}rem`)}`] = { padding: remValue }
+          acc[`.${e(`m-${key}rem`)}`] = { margin: remValue }
+          acc[`.${e(`w-${key}rem`)}`] = { width: remValue }
+          acc[`.${e(`h-${key}rem`)}`] = { height: remValue }
+        }
+        return acc
+      }, {})
+
+      addUtilities(remSpacing)
     },
   ],
 }
+
 export default config

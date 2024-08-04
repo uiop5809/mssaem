@@ -2,10 +2,6 @@
 
 const buttonTheme = {
   color: {
-    purple: 'bg-main2',
-    lightpurple: 'bg-main',
-    green: 'bg-green',
-    gray: 'bg-gray3',
     enfp: 'bg-enfp',
     enfj: 'bg-enfj',
     infp: 'bg-infp',
@@ -22,6 +18,15 @@ const buttonTheme = {
     isfj: 'bg-isfj',
     estj: 'bg-estj',
     esfj: 'bg-esfj',
+
+    purple: 'bg-main2',
+    lightpurple: 'bg-main',
+    green: 'bg-green',
+    gray: 'bg-gray3',
+
+    NEWBIE: 'bg-newbie',
+    MBTMI: 'bg-mbtmi',
+    FUNFUN: 'bg-funfun',
   },
   size: {
     small: 'px-8.75 py-2.5 rounded-3xl text-body font-bold',
@@ -32,7 +37,7 @@ const buttonTheme = {
   },
 }
 
-export type Color = keyof typeof buttonTheme.color
+export type Color = keyof typeof buttonTheme.color | '엠비티어른' | '엠비티라노'
 export type Size = keyof typeof buttonTheme.size
 
 export interface ButtonProps {
@@ -41,6 +46,7 @@ export interface ButtonProps {
   color?: Color
   onClick?: () => void
   disabled?: boolean
+  className?: string
 }
 
 const Button = ({
@@ -49,21 +55,35 @@ const Button = ({
   color = 'green',
   onClick,
   disabled,
-}: ButtonProps) => (
-  <button
-    type="button"
-    className={`text-white ${buttonTheme.size[size]} ${buttonTheme.color[color]} whitespace-nowrap`}
-    onClick={onClick}
-    disabled={disabled}
-  >
-    {text}
-  </button>
-)
+  className,
+}: ButtonProps) => {
+  let colorClass
+
+  if (color === '엠비티어른') {
+    colorClass = 'bg-mbtiadult'
+  } else if (color === '엠비티라노') {
+    colorClass = 'bg-mbtilano'
+  } else {
+    colorClass = buttonTheme.color[color]
+  }
+
+  return (
+    <button
+      type="button"
+      className={`text-white ${buttonTheme.size[size]} ${colorClass} whitespace-nowrap ${className}`} // 수정
+      onClick={onClick}
+      disabled={disabled}
+    >
+      {text}
+    </button>
+  )
+}
 
 Button.defaultProps = {
   color: 'green',
   onClick: undefined,
   disabled: false,
+  className: '', // 추가
 }
 
 export default Button

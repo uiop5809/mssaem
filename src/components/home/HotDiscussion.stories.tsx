@@ -1,15 +1,15 @@
-import HotDiscussions, {
-  HotDiscussionsProps,
-} from '@/components/home/HotDiscussions'
+import HotDiscussion, {
+  HotDiscussionProps,
+} from '@/components/home/HotDiscussion'
 import { Meta, StoryFn } from '@storybook/react'
 
 export default {
-  title: 'Home/HotDiscussions',
-  component: HotDiscussions,
-} as Meta<HotDiscussionsProps>
+  title: 'Home/HotDiscussion',
+  component: HotDiscussion,
+} as Meta<HotDiscussionProps>
 
-const Template: StoryFn<HotDiscussionsProps> = (args: HotDiscussionsProps) => (
-  <HotDiscussions {...args} />
+const Template: StoryFn<HotDiscussionProps> = (args: HotDiscussionProps) => (
+  <HotDiscussion {...args} />
 )
 
 export const Primary = Template.bind({})

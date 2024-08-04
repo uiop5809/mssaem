@@ -1,8 +1,8 @@
-import MbtiCategories from './MbtiCategories'
 import { Meta, StoryFn } from '@storybook/react'
+import MbtiCategories from './MbtiCategories'
 
 export default {
-  title: 'MbtiCategories/MbtiCategories',
+  title: 'Board/MbtiCategories',
   component: MbtiCategories,
 } as Meta
 
