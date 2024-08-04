@@ -30,10 +30,26 @@ const Header = () => {
     router.push(path)
   }
 
+  const handleKeyDown = (
+    event: React.KeyboardEvent<HTMLDivElement>,
+    path: string,
+  ) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      setSelected(path)
+      router.push(path)
+    }
+  }
+
   return (
     <header className="flex flex-col gap-4 sm:gap-5 w-full">
       {/* 데스크탑 버전 */}
-      <div className="hidden sm:flex justify-between items-center">
+      <div
+        role="button"
+        tabIndex={0}
+        onClick={() => router.push('/')}
+        onKeyDown={(event) => handleKeyDown(event, '/')}
+        className="hidden sm:flex justify-between items-center cursor-pointer"
+      >
         <Image
           src="/images/common/logo.svg"
           alt="logo"
@@ -45,12 +61,20 @@ const Header = () => {
 
       {/* 모바일 버전 */}
       <div className="sm:hidden flex justify-between items-center">
-        <Image
-          src="/images/common/cat_logo.svg"
-          alt="cat logo"
-          width={35}
-          height={30}
-        />
+        <div
+          role="button"
+          tabIndex={0}
+          onClick={() => router.push('/')}
+          onKeyDown={(event) => handleKeyDown(event, '/')}
+          className="cursor-pointer"
+        >
+          <Image
+            src="/images/common/cat_logo.svg"
+            alt="cat logo"
+            width={35}
+            height={30}
+          />
+        </div>
         <div className="flex items-center gap-5 list-none">
           {extraCategories.map((category) => (
             <li key={category.path}>
