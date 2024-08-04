@@ -3,6 +3,7 @@ import './globals.css'
 import Recoil from '@/recoil/Recoil'
 import localFont from 'next/font/local'
 import dynamic from 'next/dynamic'
+import ReactQueryProviders from '@/hooks/useReactQuery'
 
 const pretendard = localFont({
   src: '../../public/fonts/PretendardVariable.woff2',
@@ -26,18 +27,20 @@ const Header = dynamic(() => import('@/components/common/Header'), {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
     <html lang="kr">
       <body className={`${pretendard.variable} font-pretendard`}>
         <Recoil>
-          <main className="flex flex-col p-5 sm:px-5% md:px-10%">
-            <Header />
-            {children}
-            {/* <Footer /> */}
-          </main>
+          <ReactQueryProviders>
+            <main className="flex flex-col p-5 sm:px-5% md:px-10%">
+              <Header />
+              {children}
+              {/* <Footer /> */}
+            </main>
+          </ReactQueryProviders>
         </Recoil>
       </body>
     </html>
