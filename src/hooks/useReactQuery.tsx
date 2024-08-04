@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 export default function ReactQueryProviders({
   children,
@@ -11,8 +12,8 @@ export default function ReactQueryProviders({
       new QueryClient({
         defaultOptions: {
           queries: {
-            // With SSR, we usually want to set some default staleTime
-            // above 0 to avoid refetching immediately on the client
+            // SSR에서는 클라이언트에서 즉시 재요청하는 것을 피하기 위해,
+            // default staleTime을 0보다 높게 설정하는 것이 일반적
             staleTime: 60 * 1000,
           },
         },
@@ -20,6 +21,9 @@ export default function ReactQueryProviders({
   )
 
   return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    <QueryClientProvider client={queryClient}>
+      {children}
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   )
 }
