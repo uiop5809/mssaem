@@ -1,6 +1,6 @@
 import React from 'react'
 
-export interface HotProps {
+export interface HotThreeProps {
   boardId: number | null
   boardTitle: string | null
   discussionId: number | null
@@ -9,14 +9,14 @@ export interface HotProps {
   worryBoardTitle: string | null
 }
 
-const Hot = ({
+const HotThree = ({
   boardId,
   boardTitle,
   discussionId,
   discussionTitle,
   worryBoardId,
   worryBoardTitle,
-}: HotProps) => {
+}: HotThreeProps) => {
   const getCurrentLabel = () => {
     if (boardId != null) return '게시물'
     if (discussionId != null) return '토론글'
@@ -52,4 +52,4 @@ const Hot = ({
   )
 }
 
-export default Hot
+export default HotThree

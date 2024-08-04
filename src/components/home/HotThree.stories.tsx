@@ -1,12 +1,14 @@
-import Hot, { HotProps } from '@/components/home/Hot'
+import HotThree, { HotThreeProps } from '@/components/home/HotThree'
 import { Meta, StoryFn } from '@storybook/react'
 
 export default {
-  title: 'Home/Hot',
-  component: Hot,
-} as Meta<HotProps>
+  title: 'Home/HotThree',
+  component: HotThree,
+} as Meta<HotThreeProps>
 
-const Template: StoryFn<HotProps> = (args: HotProps) => <Hot {...args} />
+const Template: StoryFn<HotThreeProps> = (args: HotThreeProps) => (
+  <HotThree {...args} />
+)
 
 export const Primary = Template.bind({})
 Primary.args = {
