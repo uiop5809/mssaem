@@ -15,7 +15,7 @@ const HotThreeBox = () => {
   }
 
   return (
-    <div className="w-full-vw ml-half-vw flex flex-wrap justify-center gap-7.5 px-5 sm:px-5% md:px-12% py-16 bg-main4 p-4 sm:grid sm:grid-cols-2 md:grid md:grid-cols-4">
+    <div className="w-full-vw ml-half-vw flex flex-wrap justify-center gap-7.5 px-5 sm:px-5% md:px-13% py-16 bg-main4 p-4 sm:grid sm:grid-cols-2 lg:grid lg:grid-cols-4">
       {data && (
         <>
           <HotThree

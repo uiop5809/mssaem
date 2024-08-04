@@ -1,27 +1,19 @@
 'use client'
 
+import User from '@/model/User'
 import Image from 'next/image'
-import Button, { Color } from './Button'
+import Button from './Button'
 
 export interface ProfileProps {
-  nickName: string
-  mbti: Color
-  badge?: string
-  profileImgUrl: string
+  user: User
   createdAt?: string
 }
 
-const Profile = ({
-  nickName,
-  mbti,
-  badge,
-  profileImgUrl,
-  createdAt,
-}: ProfileProps) => (
+const Profile = ({ user, createdAt }: ProfileProps) => (
   <div className="flex items-center gap-4.5">
     <div className="w-14 h-14 relative rounded-full overflow-hidden">
       <Image
-        src={profileImgUrl}
+        src={user.profileImgUrl}
         alt="profile"
         className="w-full h-full object-cover"
         width={40}
@@ -30,19 +22,20 @@ const Profile = ({
     </div>
     <div className="flex flex-col gap-1">
       <div className="flex items-center gap-2">
-        <div className="text-headline font-semibold">{nickName} 님</div>
-        {createdAt && <div className="text-gray2 text-caption">{createdAt}</div>}
+        <div className="text-headline font-semibold">{user.nickName} 님</div>
+        {createdAt && (
+          <div className="text-gray2 text-caption">{createdAt}</div>
+        )}
       </div>
       <div className="flex gap-2.5">
-        <Button text={mbti} color={mbti} size="badge" />
-        {badge && <Button text={badge} size="badge" />}
+        <Button text={user.mbti} color={user.mbti} size="badge" />
+        {user.badge && <Button text={user.badge} size="badge" />}
       </div>
     </div>
   </div>
 )
 
 Profile.defaultProps = {
-  badge: undefined,
   createdAt: undefined,
 }
 

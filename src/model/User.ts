@@ -1,7 +1,9 @@
+import { MBTI } from '@/components/common/Button'
+
 interface User {
   id: number
   nickName: string
-  mbti: string
+  mbti: MBTI
   badge: string
   profileImgUrl: string
 }
