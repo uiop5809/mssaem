@@ -42,6 +42,7 @@
     "sass-loader": "^14.2.1",
     "style-loader": "^4.0.0",
     "styled-components": "^6.1.11",
+    "tailwind-scrollbar-hide": "^1.1.7",
     "twin.macro": "^3.4.1"
   },
   "devDependencies": {

@@ -115,6 +115,7 @@ const config: Config = {
     },
   },
   plugins: [
+    require('tailwind-scrollbar-hide'),
     function ({ addUtilities, e, theme }: PluginAPI) {
       const remSpacing = Object.entries(theme('spacing')).reduce<
         Record<string, Record<string, string>>
