@@ -34,54 +34,59 @@ const Category = () => {
   }
 
   return (
-    <div className="flex justify-between items-center mb-1">
-      <ul className="flex items-center text-title3 font-normal">
-        {categories.map((category) => (
-          <li key={category.path}>
-            <button
-              type="button"
-              onClick={() => handleClick(category.path)}
-              className={`mr-7 cursor-pointer relative hover:text-main1 transition-all ${
-                selected === category.path
-                  ? 'text-main1 font-bold after:content-[""] after:absolute after:bottom-[-10px] after:left-0 after:w-full after:h-[2px] after:bg-main1 after:opacity-100'
-                  : ''
-              }`}
-            >
-              {category.label}
-            </button>
-          </li>
-        ))}
-      </ul>
+    <div className="sm:overflow-x-visible overflow-x-auto relative">
+      <div className="h-12 border-t border-t-gray5 sm:border-t-0 whitespace-nowrap sm:whitespace-normal flex justify-between items-center relative">
+        <ul className="flex items-center text-title3 font-normal">
+          {categories.map((category) => (
+            <li key={category.path} className="list-none">
+              <button
+                type="button"
+                onClick={() => handleClick(category.path)}
+                className={`mr-7 cursor-pointer relative hover:text-main1 transition-all ${
+                  selected === category.path
+                    ? 'text-main1 font-bold after:content-[""] after:absolute after:bottom-[-10px] after:left-0 after:w-full after:h-[2px] after:bg-main1 after:opacity-100'
+                    : ''
+                }`}
+              >
+                {category.label}
+              </button>
+            </li>
+          ))}
+        </ul>
 
-      <ul className="flex items-center text-title3 font-normal">
-        {extraCategories.map((category) => (
-          <li key={category.path}>
+        {/* 데스크탑 버전 */}
+        <ul className="hidden sm:flex items-center text-title3 font-normal list-none">
+          {extraCategories.map((category) => (
+            <li key={category.path} className="list-none">
+              <button
+                type="button"
+                onClick={() => handleClick(category.path)}
+                className={`ml-7 cursor-pointer relative hover:text-main1 transition-all ${
+                  selected === category.path
+                    ? 'text-main1 font-bold after:content-[""] after:absolute after:bottom-[-10px] after:left-0 after:w-full after:h-[2px] after:bg-main1 after:opacity-100'
+                    : ''
+                }`}
+              >
+                {category.label}
+              </button>
+            </li>
+          ))}
+          <li className="list-none">
             <button
               type="button"
-              onClick={() => handleClick(category.path)}
-              className={`ml-7 cursor-pointer relative hover:text-main1 transition-all ${
-                selected === category.path
-                  ? 'text-main1 font-bold after:content-[""] after:absolute after:bottom-[-10px] after:left-0 after:w-full after:h-[2px] after:bg-main1 after:opacity-100'
-                  : ''
-              }`}
+              onClick={() => router.push('/search')}
+              className="ml-7 cursor-pointer relative hover:text-main1 transition-all"
             >
-              {category.label}
+              <Image
+                src="/images/common/search.svg"
+                alt="search"
+                width={35}
+                height={35}
+              />
             </button>
           </li>
-        ))}
-        <button
-          type="button"
-          onClick={() => router.push('/search')}
-          className="ml-7 cursor-pointer relative hover:text-main1 transition-all"
-        >
-          <Image
-            src="/images/common/search.svg"
-            alt="search"
-            width={35}
-            height={35}
-          />
-        </button>
-      </ul>
+        </ul>
+      </div>
     </div>
   )
 }

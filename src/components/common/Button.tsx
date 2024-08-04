@@ -46,6 +46,7 @@ export interface ButtonProps {
   color?: Color
   onClick?: () => void
   disabled?: boolean
+  className?: string
 }
 
 const Button = ({
@@ -54,21 +55,22 @@ const Button = ({
   color = 'green',
   onClick,
   disabled,
+  className,
 }: ButtonProps) => {
-  let colorClass;
-  
+  let colorClass
+
   if (color === '엠비티어른') {
-    colorClass = 'bg-mbtiadult';
+    colorClass = 'bg-mbtiadult'
   } else if (color === '엠비티라노') {
-    colorClass = 'bg-mbtilano';
+    colorClass = 'bg-mbtilano'
   } else {
-    colorClass = buttonTheme.color[color];
+    colorClass = buttonTheme.color[color]
   }
 
   return (
     <button
       type="button"
-      className={`text-white ${buttonTheme.size[size]} ${colorClass} whitespace-nowrap`}
+      className={`text-white ${buttonTheme.size[size]} ${colorClass} whitespace-nowrap ${className}`} // 수정
       onClick={onClick}
       disabled={disabled}
     >
@@ -81,6 +83,7 @@ Button.defaultProps = {
   color: 'green',
   onClick: undefined,
   disabled: false,
+  className: '', // 추가
 }
 
 export default Button

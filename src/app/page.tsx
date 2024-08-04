@@ -1,13 +1,12 @@
 import dynamic from 'next/dynamic'
 
-// Header 컴포넌트를 동적으로 불러오기
 const Header = dynamic(() => import('@/components/common/Header'), {
   ssr: false,
 })
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col ">
+    <main className="flex p-5 sm:px-5% md:px-10%">
       <Header />
     </main>
   )
