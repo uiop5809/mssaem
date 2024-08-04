@@ -35,7 +35,7 @@ const Category = () => {
 
   return (
     <div className="sm:overflow-x-visible overflow-x-auto relative scrollbar-hide">
-      <div className="h-12 border-t border-t-gray5 sm:border-t-0 whitespace-nowrap sm:whitespace-normal flex justify-between items-center relative">
+      <div className="h-12 border-t border-t-gray5 whitespace-nowrap flex justify-between items-center relative">
         <ul className="flex items-center text-title3 font-normal">
           {categories.map((category) => (
             <li key={category.path} className="list-none">
@@ -54,8 +54,7 @@ const Category = () => {
           ))}
         </ul>
 
-        {/* 데스크탑 버전 */}
-        <ul className="hidden sm:flex items-center text-title3 font-normal list-none">
+        <ul className="hidden sm:flex items-center justify-center whitespace-nowrap text-title3 font-normal list-none">
           {extraCategories.map((category) => (
             <li key={category.path} className="list-none">
               <button
@@ -75,7 +74,7 @@ const Category = () => {
             <button
               type="button"
               onClick={() => router.push('/search')}
-              className="ml-7 cursor-pointer relative hover:text-main1 transition-all"
+              className="flex items-center ml-7 w-8 h-8 cursor-pointer relative hover:text-main1 transition-all"
             >
               <Image
                 src="/images/common/search.svg"

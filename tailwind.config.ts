@@ -89,6 +89,7 @@ const config: Config = {
         '95': '380px',
         '5%': '5%',
         '10%': '10%',
+        '12%': '12%',
       },
       borderRadius: {
         '2.5': '10px',
@@ -99,9 +100,14 @@ const config: Config = {
       borderWidth: {
         '1': '1px',
       },
+      margin: {
+        'half-vw': 'calc(-50vw + 50%)',
+      },
       width: {
         '21': '84px',
         '24': '96px',
+        '67.5': '270px',
+        'full-vw': '100vw',
       },
       height: {
         '21': '84px',
@@ -111,6 +117,12 @@ const config: Config = {
       minHeight: {
         '30': '120px',
         '54': '212px',
+      },
+      minWidth: {
+        '67.5': '270px',
+      },
+      maxWidth: {
+        '67.5': '270px',
       },
     },
   },

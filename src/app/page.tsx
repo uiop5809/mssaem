@@ -1,3 +1,5 @@
+import HotThreeBox from '@/components/home/HotThreeBox'
+
 export default function Home() {
-  return <div></div>
+  return <HotThreeBox />
 }

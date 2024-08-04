@@ -42,7 +42,7 @@ const Header = () => {
 
   return (
     <header className="flex flex-col gap-4 sm:gap-5 w-full">
-      {/* 데스크탑 버전 */}
+      {/* desktop */}
       <div
         role="button"
         tabIndex={0}
@@ -59,7 +59,7 @@ const Header = () => {
         <Button text="로그인하고 이용하기" color="purple" size="medium" />
       </div>
 
-      {/* 모바일 버전 */}
+      {/* mobile */}
       <div className="sm:hidden flex justify-between items-center">
         <div
           role="button"

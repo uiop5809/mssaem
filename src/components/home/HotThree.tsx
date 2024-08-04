@@ -35,7 +35,7 @@ const HotThree = ({
   const title = getTitle()
 
   return (
-    <div className="relative flex flex-col justify-between w-full h-44 pt-8.75 pr-7.5 pb-5 pl-7.5 bg-white rounded-7.5">
+    <div className="relative flex flex-col justify-between h-44 pt-8.75 pr-7.5 pb-5 pl-7.5 bg-white w-full rounded-7.5">
       <div className="absolute top-[-10px] left-3.75 bg-alarm text-white text-footnote px-2.5 py-2 font-regular">
         HOT
       </div>
@@ -43,7 +43,9 @@ const HotThree = ({
         지금의 {currentLabel}
       </div>
       {title && (
-        <div className="text-maindark text-title3 font-semibold">{title}</div>
+        <div className="text-maindark text-title3 font-semibold break-words">
+          {title}
+        </div>
       )}
       <div className="text-gray2 text-caption underline text-right">
         바로가기
