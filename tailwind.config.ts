@@ -94,6 +94,7 @@ const config: Config = {
         }, {}),
       },
       borderRadius: {
+        '2.5': '10px',
         '3.75': '15px',
         '7.5': '30px',
         '14': '56px',
