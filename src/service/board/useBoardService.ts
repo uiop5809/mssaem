@@ -28,7 +28,7 @@ const useBoardDetail = (boardId: number) =>
 
 const usePostCategoryBookmark = () => {
   const mutationFn = (mbti: string): Promise<void> =>
-    queryOptions.postBoardLike.mutationFn(mbti)
+    queryOptions.postCategoryBookmark.mutationFn(mbti)
 
   const options: UseMutationOptions<void, Error, string, unknown> = {
     mutationFn,
