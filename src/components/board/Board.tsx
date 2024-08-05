@@ -1,7 +1,8 @@
 'use client'
 
+import { User } from '@/model/User'
 import Image from 'next/image'
-import Profile, { ProfileProps } from '../common/Profile'
+import Profile from '../common/Profile'
 
 export interface BoardProps {
   title: string
@@ -10,7 +11,7 @@ export interface BoardProps {
   likeCount: number
   commentCount: number
   createdAt: string
-  memberSimpleInfo: ProfileProps
+  memberSimpleInfo: User
 }
 
 const Board = ({
@@ -24,7 +25,7 @@ const Board = ({
 }: BoardProps) => (
   <div className="flex justify-between items-center">
     <div className="flex flex-col justify-between gap-5">
-      <Profile {...memberSimpleInfo} />
+      <Profile user={memberSimpleInfo} />
       <div className="flex flex-col gap-1">
         <p className="text-title3 font-bold">{title}</p>
         <p className="text-body text-mainblack">{content}</p>

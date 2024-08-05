@@ -1,6 +1,6 @@
 'use client'
 
-import User from '@/model/User'
+import { User } from '@/model/User'
 import Image from 'next/image'
 import Button from './Button'
 

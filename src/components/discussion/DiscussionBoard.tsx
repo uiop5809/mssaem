@@ -1,8 +1,9 @@
 'use client'
 
+import { User } from '@/model/User'
 import Image from 'next/image'
 import Container from '../common/Container'
-import Profile, { ProfileProps } from '../common/Profile'
+import Profile from '../common/Profile'
 import DiscussionButton from './DiscussionButton'
 
 export interface DiscussionBoardProps {
@@ -11,7 +12,7 @@ export interface DiscussionBoardProps {
   participantCount: number
   commentCount: number
   createdAt: string
-  memberSimpleInfo: ProfileProps
+  memberSimpleInfo: User
   options: []
 }
 
@@ -28,7 +29,7 @@ const DiscussionBoard = ({
     <div className="flex flex-col gap-6">
       <div className="flex flex-col justify-between gap-5">
         <div className="flex justify-between">
-          <Profile {...memberSimpleInfo} />
+          <Profile user={memberSimpleInfo} />
           <div className="text-cpation text-gray2">{createdAt}</div>
         </div>
         <div className="flex flex-col gap -1">

@@ -22,7 +22,7 @@ Primary.args = {
   memberSimpleInfo: {
     profileImgUrl: '/images/common/default.svg',
     nickName: '유보라',
-    mbti: 'enfp',
+    mbti: 'ENFP',
     badge: '엠비티어른',
   },
 }

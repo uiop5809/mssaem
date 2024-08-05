@@ -1,7 +1,7 @@
 'use client'
 
+import { User } from '@/model/User'
 import { DiscussionOption } from '@/model/Discussion'
-import User from '@/model/User'
 import Image from 'next/image'
 import Profile from '../common/Profile'
 import Container from '../common/Container'
@@ -14,7 +14,7 @@ export interface HotDiscussionProps {
   commentCount: number
   createdAt: string
   memberSimpleInfo: User
-  options: DiscussionOption[]
+  options?: DiscussionOption[]
 }
 
 const HotDiscussion = ({
@@ -24,7 +24,7 @@ const HotDiscussion = ({
   commentCount,
   createdAt,
   memberSimpleInfo,
-  options,
+  options = [],
 }: HotDiscussionProps) => (
   <Container color="purple">
     <div className="flex flex-col gap-6">

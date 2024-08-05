@@ -15,31 +15,58 @@ const HotThreeBox = () => {
   }
 
   return (
-    <div className="bg-main4 w-full-vw ml-half-vw flex flex-wrap justify-center gap-7.5 px-6% py-7.5  sm:px-7% sm:grid sm:grid-cols-2  md:px-13% lg:py-12.5 lg:grid lg:grid-cols-4">
-      {data && (
-        <>
-          <HotThree
-            boardTitle={data.boardTitle}
-            discussionTitle={data.discussionTitle}
-            worryBoardTitle={data.worryBoardTitle}
-            board="board"
-          />
-          <HotThree
-            boardTitle={data.boardTitle}
-            discussionTitle={data.discussionTitle}
-            worryBoardTitle={data.worryBoardTitle}
-            board="discussion"
-          />
-          <HotThree
-            boardTitle={data.boardTitle}
-            discussionTitle={data.discussionTitle}
-            worryBoardTitle={data.worryBoardTitle}
-            board="worry"
-          />
-          <NotLogin />
-        </>
-      )}
-    </div>
+    <>
+      <div className="bg-main4 w-full-vw ml-half-vw flex justify-center overflow-x-scroll gap-7.5 px-10 py-7.5 scrollbar-hide sm:hidden">
+        <NotLogin />
+        {data && (
+          <>
+            <HotThree
+              boardTitle={data.boardTitle}
+              discussionTitle={data.discussionTitle}
+              worryBoardTitle={data.worryBoardTitle}
+              board="board"
+            />
+            <HotThree
+              boardTitle={data.boardTitle}
+              discussionTitle={data.discussionTitle}
+              worryBoardTitle={data.worryBoardTitle}
+              board="discussion"
+            />
+            <HotThree
+              boardTitle={data.boardTitle}
+              discussionTitle={data.discussionTitle}
+              worryBoardTitle={data.worryBoardTitle}
+              board="worry"
+            />
+          </>
+        )}
+      </div>
+      <div className="hidden bg-main4 w-full-vw ml-half-vw justify-center gap-7.5 px-6% py-7.5 sm:px-7% sm:grid sm:grid-cols-2 md:px-13% lg:py-12.5 lg:grid lg:grid-cols-4">
+        {data && (
+          <>
+            <HotThree
+              boardTitle={data.boardTitle}
+              discussionTitle={data.discussionTitle}
+              worryBoardTitle={data.worryBoardTitle}
+              board="board"
+            />
+            <HotThree
+              boardTitle={data.boardTitle}
+              discussionTitle={data.discussionTitle}
+              worryBoardTitle={data.worryBoardTitle}
+              board="discussion"
+            />
+            <HotThree
+              boardTitle={data.boardTitle}
+              discussionTitle={data.discussionTitle}
+              worryBoardTitle={data.worryBoardTitle}
+              board="worry"
+            />
+          </>
+        )}
+        <NotLogin />
+      </div>
+    </>
   )
 }
 

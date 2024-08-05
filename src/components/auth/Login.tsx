@@ -1,13 +1,8 @@
-import { useRouter } from 'next/router'
-import { Color } from '../common/Button'
-import Profile from '../common/Profile'
+'use client'
 
-export interface LoginProps {
-  profileImgUrl: string
-  nickName: string
-  mbti: Color
-  badge?: string
-}
+import { User } from '@/model/User'
+import { useRouter } from 'next/router'
+import Profile from '../common/Profile'
 
 const menuItems = [
   { id: 'chat', label: 'M쌤 채팅', path: '/chat' },
@@ -16,7 +11,7 @@ const menuItems = [
   { id: 'profile', label: '프로필 설정', path: '/profile-settings' },
 ]
 
-const Login = ({ profileImgUrl, nickName, mbti, badge }: LoginProps) => {
+const Login = ({ profileImgUrl, nickName, mbti, badge }: User) => {
   const router = useRouter()
 
   return (
@@ -25,12 +20,7 @@ const Login = ({ profileImgUrl, nickName, mbti, badge }: LoginProps) => {
         <p className="text-gray2 text-caption cursor-pointer">로그아웃</p>
       </div>
       <div className="flex flex-col gap-4">
-        <Profile
-          profileImgUrl={profileImgUrl}
-          nickName={nickName}
-          mbti={mbti}
-          badge={badge}
-        />
+        <Profile user={{ profileImgUrl, nickName, mbti, badge }} />
         <ul className="flex justify-between w-full text-gray2 text-caption">
           {menuItems.map((item, index) => (
             <div key={item.id} className="flex items-center">

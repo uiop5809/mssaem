@@ -34,7 +34,7 @@ const HotThree = ({
   const handleGoToClick = () => {}
 
   return (
-    <div className="relative flex flex-col justify-between h-44 pt-8.75 pr-7.5 pb-5 pl-7.5 bg-white w-full rounded-7.5">
+    <div className="relative flex flex-col justify-between h-44 pt-8.75 pr-7.5 pb-5 pl-7.5 bg-white w-full rounded-7.5 min-w-67.5 sm:min-w-0">
       <div className="absolute top-[-10px] left-3.75 bg-alarm text-white text-footnote px-2.5 py-2 font-regular">
         HOT
       </div>
