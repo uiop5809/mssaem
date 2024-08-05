@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { queryOptions } from './queries'
+import { queryOptions } from './HomeQueries'
 
 const useHotThree = () => useQuery(queryOptions.hotThree)
 
