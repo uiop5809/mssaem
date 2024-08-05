@@ -17,7 +17,6 @@
       "error",
       { "devDependencies": ["**/*.stories.tsx"] }
     ],
-    // 화살표 함수 사용
     "react/function-component-definition": [
       "off",
       {
