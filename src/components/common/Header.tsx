@@ -30,79 +30,72 @@ const Header = () => {
     router.push(path)
   }
 
-  const handleKeyDown = (
-    event: React.KeyboardEvent<HTMLDivElement>,
-    path: string,
-  ) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      setSelected(path)
-      router.push(path)
-    }
-  }
-
   return (
-    <header className="flex flex-col gap-4 sm:gap-5 w-full">
-      {/* desktop */}
-      <div
-        role="button"
-        tabIndex={0}
-        onClick={() => router.push('/')}
-        onKeyDown={(event) => handleKeyDown(event, '/')}
-        className="hidden sm:flex justify-between items-center cursor-pointer"
-      >
-        <Image
-          src="/images/common/logo.svg"
-          alt="logo"
-          width={238}
-          height={78}
-        />
-        <Button text="로그인하고 이용하기" color="purple" size="medium" />
-      </div>
-
-      {/* mobile */}
-      <div className="sm:hidden flex justify-between items-center">
+    <>
+      <header className="fixed top-0 left-0 w-full bg-white z-50 shadow-custom-light px-5 sm:px-7% md:px-10%">
+        {/* desktop */}
         <div
           role="button"
           tabIndex={0}
           onClick={() => router.push('/')}
-          onKeyDown={(event) => handleKeyDown(event, '/')}
-          className="cursor-pointer"
+          className="hidden sm:flex justify-between items-center cursor-pointer py-5"
         >
           <Image
-            src="/images/common/cat_logo.svg"
-            alt="cat logo"
-            width={35}
-            height={30}
+            src="/images/common/logo.svg"
+            alt="logo"
+            width={238}
+            height={78}
           />
+          <Button text="로그인하고 이용하기" color="PURPLE" size="medium" />
         </div>
-        <div className="flex items-center gap-5 list-none">
-          {extraCategories.map((category) => (
-            <li key={category.path}>
-              <button
-                type="button"
-                onClick={() => handleClick(category.path)}
-                className={`cursor-pointer relative hover:text-main1 transition-all ${
-                  selected === category.path
-                    ? 'text-main1 font-bold after:content-[""] after:absolute after:bottom-[-10px] after:left-0 after:w-full after:h-[2px] after:bg-main1 after:opacity-100'
-                    : ''
-                }`}
-              >
-                {category.label}
-              </button>
-            </li>
-          ))}
-          <button type="button" onClick={() => router.push('/search')}>
+
+        {/* mobile */}
+        <div className="sm:hidden flex justify-between items-center pt-10 pb-2">
+          <div
+            role="button"
+            tabIndex={0}
+            onClick={() => router.push('/')}
+            className="cursor-pointer"
+          >
             <Image
-              src="/images/common/search.svg"
-              alt="search"
+              src="/images/common/cat_logo.svg"
+              alt="cat logo"
               width={35}
-              height={35}
+              height={30}
             />
-          </button>
+          </div>
+          <div className="flex items-center gap-5 list-none">
+            {extraCategories.map((category) => (
+              <li key={category.path}>
+                <button
+                  type="button"
+                  onClick={() => handleClick(category.path)}
+                  className={`cursor-pointer relative hover:text-main1 transition-all ${
+                    selected === category.path
+                      ? 'text-main1 font-bold after:content-[""] after:absolute after:bottom-[-10px] after:left-0 after:w-full after:h-[2px] after:bg-main1 after:opacity-100'
+                      : ''
+                  }`}
+                >
+                  {category.label}
+                </button>
+              </li>
+            ))}
+            <button type="button" onClick={() => router.push('/search')}>
+              <Image
+                src="/images/common/search.svg"
+                alt="search"
+                width={35}
+                height={35}
+              />
+            </button>
+          </div>
         </div>
+        <Category />
+      </header>
+      <div className="pt-30 sm:pt-38.5">
+        {/* 다른 콘텐츠는 이 div 내부에 위치 */}
       </div>
-      <Category />
-    </header>
+    </>
   )
 }
 

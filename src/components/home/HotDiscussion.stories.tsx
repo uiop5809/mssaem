@@ -20,9 +20,10 @@ Primary.args = {
   commentCount: 18,
   createdAt: '1분 전',
   memberSimpleInfo: {
+    id: 1,
     profileImgUrl: '/images/common/default.svg',
     nickName: '유보라',
-    mbti: 'enfp',
+    mbti: 'ENFP',
     badge: '엠비티어른',
   },
 }

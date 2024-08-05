@@ -88,6 +88,9 @@ const config: Config = {
         '8.75': '35px',
         '12.5': '50px',
         '15': '60px',
+        '18': '72px',
+        '30': '120px',
+        '38.5': '154px',
         '68': '272px',
         '95': '380px',
         '5%': '5%',
@@ -128,6 +131,9 @@ const config: Config = {
       },
       maxWidth: {
         '67.5': '270px',
+      },
+      boxShadow: {
+        'custom-light': '0 4px 10px rgba(0, 0, 0, 0.10)',
       },
     },
   },

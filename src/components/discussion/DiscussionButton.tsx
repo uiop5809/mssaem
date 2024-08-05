@@ -47,7 +47,7 @@ const DiscussionButton = ({
     <button
       type="submit"
       className={clsx(
-        'flex flex-col justify-center items-center border-gray4 border-1 rounded-7.5 gap-2.5 p-5 text-center w-full',
+        'flex flex-col justify-center items-center border-gray4 border-1 rounded-7.5 gap-2.5 p-4 sm:p-5 text-center w-full',
         DiscussionButtonTheme.size[size],
         {
           'bg-main2 text-white': selected,
@@ -63,7 +63,7 @@ const DiscussionButton = ({
       <div>
         <p
           className={clsx('flex flex-col gap-3', 'text-body font-regular', {
-            'text-title2 font-bold': selected || !imgUrl,
+            'text-body sm:text-title2 font-bold': selected || !imgUrl,
           })}
         >
           {content}
