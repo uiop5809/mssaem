@@ -1,5 +1,5 @@
 import Service from '@/apis/AxiosInstance'
-import Board from '@/model/Board'
+import { Board } from '@/model/Board'
 import { Discussion } from '@/model/Discussion'
 import { HotBoardMore, HotDiscussionMore, HotThree } from '@/model/Home'
 import Worry from '@/model/Worry'
