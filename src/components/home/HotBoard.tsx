@@ -29,7 +29,7 @@ const HotBoard = ({
   <Container color="purple">
     <div className="flex justify-between">
       <div className="flex flex-col justify-between gap-5">
-        <Profile user={memberSimpleInfo} createdAt={createdAt} />
+        <Profile user={memberSimpleInfo}/>
         <div className="flex flex-col gap-1">
           <p className="text-title3 font-bold">{title}</p>
           <p className="text-body text-mainblack">{content}</p>

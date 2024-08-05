@@ -1,38 +1,37 @@
 import React from 'react'
 
 export interface HotThreeProps {
-  boardId: number | null
-  boardTitle: string | null
-  discussionId: number | null
-  discussionTitle: string | null
-  worryBoardId: number | null
-  worryBoardTitle: string | null
+  boardTitle: string
+  discussionTitle: string
+  worryBoardTitle: string
+  board: string
 }
 
 const HotThree = ({
-  boardId,
   boardTitle,
-  discussionId,
   discussionTitle,
-  worryBoardId,
   worryBoardTitle,
+  board,
 }: HotThreeProps) => {
   const getCurrentLabel = () => {
-    if (boardId != null) return '게시물'
-    if (discussionId != null) return '토론글'
-    if (worryBoardId != null) return '고민글'
+    if (board === 'board') return '게시물'
+    if (board === 'discussion') return '토론글'
+    if (board === 'worry') return '고민글'
     return '내용 없음'
   }
 
   const getTitle = () => {
-    if (boardId != null) return boardTitle
-    if (discussionId != null) return discussionTitle
-    if (worryBoardId != null) return worryBoardTitle
+    if (board === 'board') return boardTitle
+    if (board === 'discussion') return discussionTitle
+    if (board === 'worry') return worryBoardTitle
     return null
   }
 
   const currentLabel = getCurrentLabel()
   const title = getTitle()
+
+  // TODO: 바로가기 link
+  const handleGoToClick = () => {}
 
   return (
     <div className="relative flex flex-col justify-between h-44 pt-8.75 pr-7.5 pb-5 pl-7.5 bg-white w-full rounded-7.5">
@@ -47,7 +46,10 @@ const HotThree = ({
           {title}
         </div>
       )}
-      <div className="text-gray2 text-caption underline text-right">
+      <div
+        onClick={handleGoToClick}
+        className="text-gray2 text-caption underline text-right cursor-pointer"
+      >
         바로가기
       </div>
     </div>

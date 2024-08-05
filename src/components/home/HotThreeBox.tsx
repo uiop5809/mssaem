@@ -15,32 +15,26 @@ const HotThreeBox = () => {
   }
 
   return (
-    <div className="w-full-vw ml-half-vw flex flex-wrap justify-center gap-7.5 px-5 sm:px-5% md:px-13% py-16 bg-main4 p-4 sm:grid sm:grid-cols-2 lg:grid lg:grid-cols-4">
+    <div className="bg-main4 w-full-vw ml-half-vw flex flex-wrap justify-center gap-7.5 px-6% py-7.5  sm:px-7% sm:grid sm:grid-cols-2  md:px-13% lg:py-12.5 lg:grid lg:grid-cols-4">
       {data && (
         <>
           <HotThree
-            boardId={data.boardId}
             boardTitle={data.boardTitle}
-            discussionId={data.discussionId}
             discussionTitle={data.discussionTitle}
-            worryBoardId={data.worryBoardId}
             worryBoardTitle={data.worryBoardTitle}
+            board="board"
           />
           <HotThree
-            boardId={data.boardId}
             boardTitle={data.boardTitle}
-            discussionId={data.discussionId}
             discussionTitle={data.discussionTitle}
-            worryBoardId={data.worryBoardId}
             worryBoardTitle={data.worryBoardTitle}
+            board="discussion"
           />
           <HotThree
-            boardId={data.boardId}
             boardTitle={data.boardTitle}
-            discussionId={data.discussionId}
             discussionTitle={data.discussionTitle}
-            worryBoardId={data.worryBoardId}
             worryBoardTitle={data.worryBoardTitle}
+            board="worry"
           />
           <NotLogin />
         </>

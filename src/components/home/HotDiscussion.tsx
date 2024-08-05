@@ -30,7 +30,7 @@ const HotDiscussion = ({
     <div className="flex flex-col gap-6">
       <div className="flex flex-col justify-between gap-5">
         <div className="flex justify-between">
-          <Profile user={memberSimpleInfo} createdAt={createdAt} />
+          <Profile user={memberSimpleInfo} />
           <div className="text-caption text-gray2">{createdAt}</div>
         </div>
         <div className="flex flex-col gap-1">
