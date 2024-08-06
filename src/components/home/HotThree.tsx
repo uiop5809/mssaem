@@ -31,17 +31,19 @@ const HotThree = ({ hotThree, board }: HotThreeProps) => {
 
   return (
     <div className="relative flex flex-col justify-between h-44 pt-10 pb-5 px-7.5 bg-white rounded-7.5 w-full min-w-67.5 sm:min-w-0">
-      <div className="absolute top-[-10px] left-3.75 bg-alarm text-white text-footnote px-2.5 py-2 font-regular">
+      <div className="absolute top-[-14px] left-3.75 bg-alarm text-white text-footnote px-2.5 py-2 font-regular">
         HOT
       </div>
-      <div className="text-gray2 text-headline font-semibold">
-        지금의 {currentLabel}
-      </div>
-      {title && (
-        <div className="text-maindark text-title3 font-semibold break-words">
-          {title}
+      <div>
+        <div className="text-gray2 text-headline font-semibold mb-2">
+          지금의 {currentLabel}
         </div>
-      )}
+        {title && (
+          <div className="text-maindark text-title3 font-semibold break-words">
+            {title}
+          </div>
+        )}
+      </div>
       <div
         onClick={handleGoToClick}
         className="text-gray2 text-caption underline text-right cursor-pointer"
