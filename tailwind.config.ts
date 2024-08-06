@@ -75,7 +75,7 @@ const config: Config = {
       screens: {
         sm: '550px', // mobile
         md: '770px', // tablet
-        lg: '850px', // desktop
+        lg: '1200px', // desktop
       },
       spacing: {
         '0.75': '3px',
@@ -83,12 +83,21 @@ const config: Config = {
         '3.25': '13px',
         '3.75': '15px',
         '4.5': '18px',
+        '5.5': '20px',
         '7.5': '30px',
         '8.75': '35px',
+        '12.5': '50px',
+        '15': '60px',
+        '18': '72px',
+        '30': '120px',
+        '38.5': '154px',
         '68': '272px',
         '95': '380px',
         '5%': '5%',
+        '6%': '6%',
+        '7%': '7%',
         '10%': '10%',
+        '13%': '13%',
       },
       borderRadius: {
         '2.5': '10px',
@@ -99,9 +108,14 @@ const config: Config = {
       borderWidth: {
         '1': '1px',
       },
+      margin: {
+        'half-vw': 'calc(-50vw + 50%)',
+      },
       width: {
         '21': '84px',
         '24': '96px',
+        '67.5': '270px',
+        'full-vw': '100vw',
       },
       height: {
         '21': '84px',
@@ -112,9 +126,19 @@ const config: Config = {
         '30': '120px',
         '54': '212px',
       },
+      minWidth: {
+        '67.5': '270px',
+      },
+      maxWidth: {
+        '67.5': '270px',
+      },
+      boxShadow: {
+        'custom-light': '0 4px 10px rgba(0, 0, 0, 0.10)',
+      },
     },
   },
   plugins: [
+    require('tailwind-scrollbar-hide'),
     function ({ addUtilities, e, theme }: PluginAPI) {
       const remSpacing = Object.entries(theme('spacing')).reduce<
         Record<string, Record<string, string>>

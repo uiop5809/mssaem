@@ -12,8 +12,10 @@ const Template: StoryFn<ProfileProps> = (args: ProfileProps) => (
 
 export const Primary = Template.bind({})
 Primary.args = {
-  profileImgUrl: '/images/common/default.svg',
-  nickName: '유보라',
-  mbti: 'enfp',
-  badge: '엠비티어른',
+  user: {
+    profileImgUrl: '/images/common/default.svg',
+    nickName: '유보라',
+    mbti: 'ENFP',
+    badge: '엠비티어른',
+  },
 }

@@ -22,7 +22,7 @@ const Template: StoryFn<ButtonProps> = (args: ButtonProps) => (
 export const PurpleSmallBtn = Template.bind({})
 PurpleSmallBtn.args = {
   text: '글쓰기',
-  color: 'purple',
+  color: 'PURPLE',
   size: 'small',
   onClick: () => {},
 }

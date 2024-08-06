@@ -1,69 +1,73 @@
 'use client'
 
+import { DiscussionBoardI, DiscussionOptionI } from '@/model/Discussion'
 import Image from 'next/image'
 import Container from '../common/Container'
-import Profile, { ProfileProps } from '../common/Profile'
-import DiscussionButton from './DiscussionButton'
+import Profile from '../common/Profile'
+import DiscussionOption from './DiscussionOption'
 
 export interface DiscussionBoardProps {
-  title: string
-  content: string
-  participantCount: number
-  commentCount: number
-  createdAt: string
-  memberSimpleInfo: ProfileProps
-  options: []
+  discussionBoard: DiscussionBoardI
 }
 
-// TODO: options 수정
-const DiscussionBoard = ({
-  title,
-  content,
-  participantCount,
-  commentCount,
-  createdAt,
-  memberSimpleInfo,
-}: DiscussionBoardProps) => (
-  <Container color="purple">
-    <div className="flex flex-col gap-6">
-      <div className="flex flex-col justify-between gap-5">
-        <div className="flex justify-between">
-          <Profile {...memberSimpleInfo} />
-          <div className="text-cpation text-gray2">{createdAt}</div>
-        </div>
-        <div className="flex flex-col gap -1">
-          <p className="text-title3 font-bold">{title}</p>
-          <p className="text-body text-mainblack">{content}</p>
-        </div>
-      </div>
+const DiscussionBoard = ({ discussionBoard }: DiscussionBoardProps) => {
+  const {
+    title,
+    content,
+    createdAt,
+    participantCount,
+    commentCount,
+    memberSimpleInfo,
+    options,
+  } = discussionBoard
 
-      <div className="flex flex-col gap-4">
-        <div className="flex justify-between gap-8">
-          <DiscussionButton
-            content="손절한다"
-            onClick={() => {}}
-            size="small"
-          />
-          <DiscussionButton content="안한다" onClick={() => {}} size="small" />
-        </div>
+  // TODO: Discussion Button Click API 연동
+  const handleDiscussionOptionClick = () => {}
 
-        <div className="flex justify-between">
-          <div className="flex gap-1">
-            <Image
-              src="/images/discussion/red_circle.svg"
-              alt="red"
-              width={12}
-              height={12}
-            />
-            <p className="text-caption text-gray2">
-              {participantCount}명이 참여 중!
-            </p>
+  return (
+    <Container color="purple">
+      <div className="flex flex-col gap-6">
+        <div className="flex flex-col justify-between gap-5">
+          <div className="flex justify-between">
+            <Profile user={memberSimpleInfo} />
+            <div className="text-cpation text-gray2">{createdAt}</div>
           </div>
-          <p className="text-caption text-gray2">댓글 {commentCount}</p>
+          <div className="flex flex-col gap -1">
+            <p className="text-title3 font-bold">{title}</p>
+            <p className="text-body text-mainblack">{content}</p>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <div className="flex justify-between gap-8">
+            {options &&
+              options.map((option: DiscussionOptionI) => (
+                <DiscussionOption
+                  discussionOption={option}
+                  size="small"
+                  onClick={handleDiscussionOptionClick}
+                />
+              ))}
+          </div>
+
+          <div className="flex justify-between">
+            <div className="flex gap-1">
+              <Image
+                src="/images/discussion/red_circle.svg"
+                alt="red"
+                width={12}
+                height={12}
+              />
+              <p className="text-caption text-gray2">
+                {participantCount}명이 참여 중!
+              </p>
+            </div>
+            <p className="text-caption text-gray2">댓글 {commentCount}</p>
+          </div>
         </div>
       </div>
-    </div>
-  </Container>
-)
+    </Container>
+  )
+}
 
 export default DiscussionBoard

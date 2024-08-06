@@ -12,16 +12,20 @@ const Template: StoryFn<CommentProps> = (args: CommentProps) => (
 
 export const Primary = Template.bind({})
 Primary.args = {
-  likeCount: '10',
-  createdAt: '10분전',
-  isLiked: 1,
-  isAllowed: '1',
-  content:
-    '말을 너무 많이 들으면 머리가 너무 아파요;; 말을 너무 많이 들으면 머리가 너무 아파요;; 말을 너무 많이 들으면 머리가 너무 아파요;; 말을 너무 많이 들으면 머리가 너무 아파요;; 말을 너무 많이 들으면 머리가 너무 아파요;; 말을 너무 많이 들으면 머리가 너무 아파요;;',
-  memberSimpleInfo: {
-    profileImgUrl: '/images/common/default.svg',
-    nickName: '유보라',
-    mbti: 'enfp',
-    badge: '엠비티어른',
+  comment: {
+    commentId: 1,
+    likeCount: 1,
+    createdAt: '10분전',
+    isLiked: false,
+    isAllowed: false,
+    parentId: 1,
+    content:
+      '말을 너무 많이 들으면 머리가 너무 아파요;; 말을 너무 많이 들으면 머리가 너무 아파요;; 말을 너무 많이 들으면 머리가 너무 아파요;; 말을 너무 많이 들으면 머리가 너무 아파요;; 말을 너무 많이 들으면 머리가 너무 아파요;; 말을 너무 많이 들으면 머리가 너무 아파요;;',
+    memberSimpleInfo: {
+      profileImgUrl: '/images/common/default.svg',
+      nickName: '유보라',
+      mbti: 'ENFP',
+      badge: '엠비티어른',
+    },
   },
 }

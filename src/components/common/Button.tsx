@@ -1,32 +1,38 @@
 'use client'
 
+const mbtiColors = {
+  ENFP: 'bg-enfp',
+  ENFJ: 'bg-enfj',
+  INFP: 'bg-infp',
+  INFJ: 'bg-infj',
+  INTJ: 'bg-intj',
+  INTP: 'bg-intp',
+  ENTJ: 'bg-entj',
+  ENTP: 'bg-entp',
+  ISTP: 'bg-istp',
+  ISFP: 'bg-isfp',
+  ESTP: 'bg-estp',
+  ESFP: 'bg-esfp',
+  ISTJ: 'bg-istj',
+  ISFJ: 'bg-isfj',
+  ESTJ: 'bg-estj',
+  ESFJ: 'bg-esfj',
+}
+
+const extraColors = {
+  PURPLE: 'bg-main2',
+  LIGHTPURPLE: 'bg-main',
+  GREEN: 'bg-green',
+  GRAY: 'bg-gray3',
+  NEWBIE: 'bg-newbie',
+  MBTMI: 'bg-mbtmi',
+  FUNFUN: 'bg-funfun',
+}
+
 const buttonTheme = {
   color: {
-    enfp: 'bg-enfp',
-    enfj: 'bg-enfj',
-    infp: 'bg-infp',
-    infj: 'bg-infj',
-    intj: 'bg-intj',
-    intp: 'bg-intp',
-    entj: 'bg-entj',
-    entp: 'bg-entp',
-    istp: 'bg-istp',
-    isfp: 'bg-isfp',
-    estp: 'bg-estp',
-    esfp: 'bg-esfp',
-    istj: 'bg-istj',
-    isfj: 'bg-isfj',
-    estj: 'bg-estj',
-    esfj: 'bg-esfj',
-
-    purple: 'bg-main2',
-    lightpurple: 'bg-main',
-    green: 'bg-green',
-    gray: 'bg-gray3',
-
-    NEWBIE: 'bg-newbie',
-    MBTMI: 'bg-mbtmi',
-    FUNFUN: 'bg-funfun',
+    ...mbtiColors,
+    ...extraColors,
   },
   size: {
     small: 'px-8.75 py-2.5 rounded-3xl text-body font-bold',
@@ -37,7 +43,9 @@ const buttonTheme = {
   },
 }
 
-export type Color = keyof typeof buttonTheme.color | '엠비티어른' | '엠비티라노'
+export type MBTI = keyof typeof mbtiColors
+export type Extr = keyof typeof extraColors
+export type Color = MBTI | Extr | '엠비티어른' | '엠비티라노'
 export type Size = keyof typeof buttonTheme.size
 
 export interface ButtonProps {
@@ -52,25 +60,30 @@ export interface ButtonProps {
 const Button = ({
   text,
   size,
-  color = 'green',
+  color = 'GREEN',
   onClick,
   disabled,
   className,
 }: ButtonProps) => {
   let colorClass
 
-  if (color === '엠비티어른') {
+  // color가 소문자일 경우 대문자로 변환
+  const normalizedColor =
+    typeof color === 'string' ? color.toUpperCase() : color
+
+  if (normalizedColor === '엠비티어른') {
     colorClass = 'bg-mbtiadult'
-  } else if (color === '엠비티라노') {
+  } else if (normalizedColor === '엠비티라노') {
     colorClass = 'bg-mbtilano'
   } else {
-    colorClass = buttonTheme.color[color]
+    colorClass =
+      buttonTheme.color[normalizedColor as keyof typeof buttonTheme.color]
   }
 
   return (
     <button
       type="button"
-      className={`text-white ${buttonTheme.size[size]} ${colorClass} whitespace-nowrap ${className}`} // 수정
+      className={`text-white ${buttonTheme.size[size]} ${colorClass} whitespace-nowrap ${className}`}
       onClick={onClick}
       disabled={disabled}
     >
@@ -83,7 +96,7 @@ Button.defaultProps = {
   color: 'green',
   onClick: undefined,
   disabled: false,
-  className: '', // 추가
+  className: '',
 }
 
 export default Button
