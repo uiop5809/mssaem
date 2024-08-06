@@ -34,7 +34,7 @@ export default function RootLayout({
       <body className={`${pretendard.variable} font-pretendard`}>
         <Recoil>
           <ReactQueryProviders>
-            <main className="h-screen-80 sm:h-screen-95 py-3 px-5 sm:px-7% md:px-10% ">
+            <main className="py-3 px-5 sm:px-7% md:px-10% ">
               <Header />
               {children}
               <Footer />
