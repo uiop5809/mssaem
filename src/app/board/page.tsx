@@ -20,13 +20,12 @@ const BoardPage = () => {
         {mbti === 'all' ? '전체' : mbti} 게시판
       </div>
       <Container color="purple">
-        <div className="text-right">
+        <div className="text-right mb-5">
           <Button
             text="글 쓰기"
             color="PURPLE"
             size="small"
             onClick={() => {}}
-            className="mb-5"
           />
         </div>
         <div className="h-[1px] bg-main" />
