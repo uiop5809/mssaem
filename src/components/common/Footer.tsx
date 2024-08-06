@@ -6,7 +6,7 @@ import Image from 'next/image'
 const option = ['이용약관', '개인정보처리방침', '문의 이메일']
 
 const Footer = () => (
-  <footer className="flex flex-col items-center gap-5">
+  <footer className="flex flex-col items-center gap-5 my-10">
     <ul className="flex justify-center items-center gap-3 text-gray2 text-caption">
       {option.map((item, index) => (
         <React.Fragment key={index}>
@@ -27,8 +27,8 @@ const Footer = () => (
     <Image
       src="/images/common/mini_logo.svg"
       alt="logo"
-      width={127}
-      height={42}
+      width={86}
+      height={28}
     />
   </footer>
 )

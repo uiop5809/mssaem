@@ -34,7 +34,7 @@ const Category = () => {
   }
 
   return (
-    <div className="h-12 border-t border-t-gray5 whitespace-nowrap flex justify-between items-center sm:overflow-x-scroll scrollbar-hide">
+    <div className="h-12 border-t border-t-gray5 whitespace-nowrap flex justify-between items-center overflow-x-scroll scrollbar-hide">
       <ul className="flex items-center text-title3 font-normal">
         {categories.map((category) => (
           <li key={category.path} className="list-none">

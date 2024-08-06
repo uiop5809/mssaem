@@ -20,10 +20,9 @@ export const metadata: Metadata = {
 const Header = dynamic(() => import('@/components/common/Header'), {
   ssr: false,
 })
-
-// const Footer = dynamic(() => import('@/components/common/Footer'), {
-//   ssr: false,
-// })
+const Footer = dynamic(() => import('@/components/common/Footer'), {
+  ssr: false,
+})
 
 export default function RootLayout({
   children,
@@ -35,10 +34,10 @@ export default function RootLayout({
       <body className={`${pretendard.variable} font-pretendard`}>
         <Recoil>
           <ReactQueryProviders>
-            <main className="flex flex-col py-3 px-5 sm:px-7% md:px-10%">
+            <main className="h-screen-80 sm:h-screen-95 py-3 px-5 sm:px-7% md:px-10% ">
               <Header />
               {children}
-              {/* <Footer /> */}
+              <Footer />
             </main>
           </ReactQueryProviders>
         </Recoil>
