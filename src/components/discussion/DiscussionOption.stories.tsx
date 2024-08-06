@@ -1,20 +1,20 @@
 import { Meta, StoryFn } from '@storybook/react'
-import DiscussionButton, { DiscussionButtonProps } from './DiscussionButton'
+import DiscussionOption, { DiscussionOptionProps } from './DiscussionOption'
 
 export default {
-  title: 'Discussion/DiscussionButton',
-  component: DiscussionButton,
+  title: 'Discussion/DiscussionOption',
+  component: DiscussionOption,
   argTypes: {
     text: { control: 'text' },
     imgUrl: { control: 'text' },
     onClick: { action: 'clicked' },
     disabled: { control: 'boolean' },
   },
-} as Meta<DiscussionButtonProps>
+} as Meta<DiscussionOptionProps>
 
-const Template: StoryFn<DiscussionButtonProps> = (
-  args: DiscussionButtonProps,
-) => <DiscussionButton {...args} />
+const Template: StoryFn<DiscussionOptionProps> = (
+  args: DiscussionOptionProps,
+) => <DiscussionOption {...args} />
 
 export const SmallPrimary = Template.bind({})
 SmallPrimary.args = {

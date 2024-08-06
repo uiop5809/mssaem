@@ -34,4 +34,13 @@ interface Profile {
   }
 }
 
-export type { User, Profile }
+interface PopularMssaemI {
+  id: number
+  nickName: string
+  mbti: MBTI
+  badge: MBTI
+  profileImageurl: string
+  introduction: string
+}
+
+export type { User, Profile, PopularMssaemI }

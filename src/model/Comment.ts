@@ -1,6 +1,6 @@
 import { User } from './User'
 
-interface Comment {
+interface CommentI {
   commentId: number
   likeCount: number
   parentId: number
@@ -17,4 +17,4 @@ interface CommentList {
   result: Comment[]
 }
 
-export type { Comment, CommentList }
+export type { CommentI, CommentList }

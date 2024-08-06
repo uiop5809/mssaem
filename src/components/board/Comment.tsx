@@ -1,32 +1,27 @@
 'use client'
 
-import { User } from '@/model/User'
+import { CommentI } from '@/model/Comment'
 import { useState } from 'react'
 import Image from 'next/image'
 import Profile from '../common/Profile'
 
 export interface CommentProps {
-  likeCount: string
-  createdAt: string
-  isLiked: number
-  isAllowed?: string
-  content: string
-  memberSimpleInfo: User
+  comment: CommentI
 }
 
-// TODO: 대댓글 isAllowed에 따라 렌더링 변경
-const Comment = ({
-  likeCount,
-  createdAt,
-  isLiked: initialIsLiked,
-  isAllowed,
-  content,
-  memberSimpleInfo,
-}: CommentProps) => {
-  const [isLiked, setIsLiked] = useState(initialIsLiked)
+const Comment = ({ comment }: CommentProps) => {
+  const {
+    memberSimpleInfo,
+    createdAt,
+    content,
+    likeCount,
+    isAllowed,
+    isLiked,
+  } = comment
 
+  const [liked, setLiked] = useState(isLiked)
   const toggleLike: () => void = () => {
-    setIsLiked((prevIsLiked) => (prevIsLiked ? 0 : 1))
+    setLiked(!liked)
   }
 
   return (
@@ -51,17 +46,15 @@ const Comment = ({
               />
             )}
           </button>
-          <span className="text-gray2 text-title3 font-bold ">{likeCount}</span>
+          <span className="text-gray2 text-title3 font-bold ">
+            {likeCount}
+            {isAllowed}
+          </span>
         </div>
       </div>
-      {isAllowed === '1' && <div></div>}
       <div className="text-maindark text-headline">{content}</div>
     </div>
   )
-}
-
-Comment.defaultProps = {
-  isAllowed: '',
 }
 
 export default Comment

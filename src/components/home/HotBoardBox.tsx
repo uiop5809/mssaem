@@ -20,17 +20,7 @@ const HotBoardBox = () => {
         {data && (
           <>
             {data.map((board) => (
-              <HotBoard
-                key={board.id}
-                title={board.title}
-                content={board.content}
-                imgUrl={board.imgUrl}
-                boardMbti={board.boardMbti}
-                likeCount={board.likeCount}
-                commentCount={board.commentCount}
-                createdAt={board.createdAt}
-                memberSimpleInfo={board.memberSimpleInfo}
-              />
+              <HotBoard hotBoard={board} key={board.id} />
             ))}
           </>
         )}

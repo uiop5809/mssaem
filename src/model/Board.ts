@@ -1,11 +1,12 @@
-import User from './User'
+import { MBTI } from '@/components/common/Button'
+import { User } from './User'
 
-interface Board {
+interface BoardI {
   id: number
   title: string
   content: string
   imgUrl: string
-  boardMbti: string
+  boardMbti?: MBTI
   likeCount: number
   commentCount: number
   createdAt: string
@@ -30,7 +31,7 @@ interface BoardDetail {
 interface BoardList {
   page: number
   totalSize: number
-  result: Board[]
+  result: BoardI[]
 }
 
 interface BoardListNumber {
@@ -53,4 +54,4 @@ interface BoardListNumber {
   estp: number | null
 }
 
-export type { Board, BoardDetail, BoardList, BoardListNumber }
+export type { BoardI, BoardDetail, BoardList, BoardListNumber }

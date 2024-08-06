@@ -60,7 +60,7 @@ export interface ButtonProps {
 const Button = ({
   text,
   size,
-  color = 'green',
+  color = 'GREEN',
   onClick,
   disabled,
   className,

@@ -1,10 +1,12 @@
-interface Worry {
+import { MBTI } from '@/components/common/Button'
+
+interface WorryBoardI {
   title: string
   content: string
-  memberMbti: string
-  targetMbti: string
+  memberMbti: MBTI
+  targetMbti: MBTI
   createdDate: string
   imgUrl: string
 }
 
-export default Worry
+export type { WorryBoardI }

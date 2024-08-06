@@ -1,7 +1,8 @@
-import Board from './Board'
-import { Discussion } from './Discussion'
+import { BoardI } from './Board'
+import { DiscussionBoardI, DiscussionOptionI } from './Discussion'
+import { User } from './User'
 
-interface HotThree {
+interface HotThreeI {
   boardId: number
   boardTitle: string
   discussionId: number
@@ -10,25 +11,43 @@ interface HotThree {
   worryBoardTitle: string
 }
 
+interface HotBoardI {
+  title: string
+  content: string
+  imgUrl?: string
+  boardMbti: string
+  likeCount: number
+  commentCount: number
+  createdAt: string
+  memberSimpleInfo: User
+}
+
 interface HotBoardMore {
   page: number
   totalSize: number
-  result: Board[]
+  result: BoardI[]
+}
+
+interface HotDiscussionI {
+  title: string
+  content: string
+  participantCount: number
+  commentCount: number
+  createdAt: string
+  memberSimpleInfo: User
+  options?: DiscussionOptionI[]
 }
 
 interface HotDiscussionMore {
   page: number
   totalSize: number
-  result: Discussion[]
+  result: DiscussionBoardI[]
 }
 
-interface PopularMssaem {
-  id: number
-  nickName: string
-  mbti: string
-  badge: string
-  profileImgUrl: string
-  introduction: string
+export type {
+  HotThreeI,
+  HotBoardI,
+  HotBoardMore,
+  HotDiscussionI,
+  HotDiscussionMore,
 }
-
-export type { HotThree, HotBoardMore, HotDiscussionMore, PopularMssaem }

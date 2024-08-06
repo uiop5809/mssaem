@@ -1,18 +1,14 @@
+import { HotThreeI } from '@/model/Home'
 import React from 'react'
 
 export interface HotThreeProps {
-  boardTitle: string
-  discussionTitle: string
-  worryBoardTitle: string
+  hotThree: HotThreeI
   board: string
 }
 
-const HotThree = ({
-  boardTitle,
-  discussionTitle,
-  worryBoardTitle,
-  board,
-}: HotThreeProps) => {
+const HotThree = ({ hotThree, board }: HotThreeProps) => {
+  const { boardTitle, discussionTitle, worryBoardTitle } = hotThree
+
   const getCurrentLabel = () => {
     if (board === 'board') return '게시물'
     if (board === 'discussion') return '토론글'

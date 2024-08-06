@@ -12,10 +12,13 @@ const Template: StoryFn<HotThreeProps> = (args: HotThreeProps) => (
 
 export const Primary = Template.bind({})
 Primary.args = {
-  boardId: 1,
-  boardTitle: '어제 강남 러쉬에서 만난 대문자 E 직원',
-  discussionId: null,
-  discussionTitle: null,
-  worryBoardId: null,
-  worryBoardTitle: null,
+  hotThree: {
+    boardId: 1,
+    boardTitle: '어제 강남 러쉬에서 만난 대문자 E 직원',
+    discussionId: 1,
+    discussionTitle: '어제 강남 러쉬에서 만난 대문자 E 직원',
+    worryBoardId: 1,
+    worryBoardTitle: '어제 강남 러쉬에서 만난 대문자 E 직원',
+  },
+  board: 'board',
 }

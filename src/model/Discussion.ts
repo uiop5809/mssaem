@@ -1,6 +1,6 @@
 import { User } from './User'
 
-interface Discussion {
+interface DiscussionBoardI {
   id: number
   title: string
   content: string
@@ -8,15 +8,16 @@ interface Discussion {
   commentCount: number
   createdAt: string
   memberSimpleInfo: User
-  options: DiscussionOption[]
+  options: DiscussionOptionI[]
 }
 
-interface DiscussionOption {
+interface DiscussionOptionI {
   id: number
   content: string
   imgUrl: string
   selectedPercent: string
   selected: boolean
+  disabled: boolean
 }
 
-export type { Discussion, DiscussionOption }
+export type { DiscussionBoardI, DiscussionOptionI }
