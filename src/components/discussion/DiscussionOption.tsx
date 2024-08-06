@@ -18,6 +18,7 @@ export interface DiscussionOptionProps {
   onClick: () => void
 }
 
+// TODO: 사진 크기 맞추기
 const DiscussionOption = ({
   discussionOption,
   size,
