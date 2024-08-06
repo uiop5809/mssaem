@@ -114,6 +114,7 @@ const config: Config = {
         'half-vw': 'calc(-50vw + 50%)',
       },
       width: {
+        '15.5': '62px',
         '21': '84px',
         '24': '96px',
         '67.5': '270px',
@@ -121,9 +122,11 @@ const config: Config = {
         'full-vw': '100vw',
       },
       height: {
+        '14.5': '58px',
         '21': '84px',
         '24': '96px',
         '44': '166px',
+        '58': '240px',
         'screen-80': 'calc(100vh - 320px)',
         'screen-95': 'calc(100vh - 360px)',
       },
