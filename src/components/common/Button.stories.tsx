@@ -30,7 +30,7 @@ PurpleSmallBtn.args = {
 export const PurpleLargeBtn = Template.bind({})
 PurpleLargeBtn.args = {
   text: '로그인하고 이용하기',
-  color: 'purple',
+  color: 'PURPLE',
   size: 'medium',
   onClick: () => {},
 }
@@ -38,7 +38,7 @@ PurpleLargeBtn.args = {
 export const GrayLargeBtn = Template.bind({})
 GrayLargeBtn.args = {
   text: '로그인',
-  color: 'gray',
+  color: 'GRAY',
   size: 'login',
   onClick: () => {},
 }
@@ -46,7 +46,7 @@ GrayLargeBtn.args = {
 export const Badge = Template.bind({})
 Badge.args = {
   text: 'MBTI',
-  color: 'istj',
+  color: 'ISTJ',
   size: 'badge',
   onClick: () => {},
 }

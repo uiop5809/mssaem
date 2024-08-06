@@ -2,12 +2,12 @@
 
 const InputTheme = {
   color: {
-    gray: 'text-gray2',
-    purple: 'border-main text-gray2',
+    gray: 'border-gray4 text-maindark',
+    purple: 'border-main text-maindark',
   },
   size: {
-    medium: 'p-4.5 text-headline rounded-3.75', // 닉네임
-    large: 'px-5 py-4 text-headline rounded-7.5 font-bold w-full', // 댓글
+    medium: 'p-4 text-headline rounded-3.75 border-2', // 닉네임
+    large: 'px-5 py-4 text-headline rounded-7.5 font-bold border-1', // 댓글
   },
 }
 
@@ -24,7 +24,7 @@ export interface InputProps {
 
 const Input = ({ value, placeholder, onChange, color, size }: InputProps) => (
   <input
-    className={`bg-white border-1 ${InputTheme.color[color]} ${InputTheme.size[size]} focus:outline-none focus:border-main`}
+    className={`bg-white w-full ${InputTheme.color[color]} ${InputTheme.size[size]} focus:outline-none`}
     value={value}
     placeholder={placeholder}
     onChange={onChange}

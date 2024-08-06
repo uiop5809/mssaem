@@ -24,7 +24,7 @@ const Template: StoryFn<InputProps> = (args: InputProps) => <Input {...args} />
 
 export const MediumInput = Template.bind({})
 MediumInput.args = {
-  value: '닉네임',
+  placeholder: '닉네임',
   color: 'gray',
   size: 'medium',
 }

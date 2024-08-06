@@ -38,7 +38,7 @@ const buttonTheme = {
     small: 'px-8.75 py-2.5 rounded-3xl text-body font-bold',
     medium: 'px-5 py-2.5 rounded-3xl text-title3 font-bold',
     large: 'px-8.75 py-2.5 rounded-3xl text-title3 font-bold',
-    login: 'py-4.5 w-95 rounded-2xl text-body font-regular',
+    login: 'py-3 max-w-95 w-full rounded-2xl text-body font-regular',
     badge: 'px-2.5 py-0.75 rounded-3xl text-footnote font-regular',
   },
 }

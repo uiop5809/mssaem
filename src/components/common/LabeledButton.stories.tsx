@@ -17,5 +17,4 @@ const Template: StoryFn<LabeledButtonProps> = (args: LabeledButtonProps) => (
 export const Primary = Template.bind({})
 Primary.args = {
   label: '[필수] 이용 약관',
-  onClick: () => {},
 }

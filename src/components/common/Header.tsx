@@ -37,33 +37,34 @@ const Header = () => {
         <div
           role="button"
           tabIndex={0}
-          onClick={() => router.push('/')}
-          className="hidden sm:flex justify-between items-center cursor-pointer py-5"
+          className="hidden cursor-auto sm:flex justify-between items-center py-5"
         >
           <Image
             src="/images/common/logo.svg"
             alt="logo"
             width={238}
             height={78}
+            onClick={() => router.push('/')}
+            className="cursor-pointer"
           />
-          <Button text="로그인하고 이용하기" color="PURPLE" size="medium" />
+          <Button
+            text="로그인하고 이용하기"
+            color="PURPLE"
+            size="medium"
+            onClick={() => router.push('/signin')}
+          />
         </div>
 
         {/* mobile */}
         <div className="sm:hidden flex justify-between items-center pt-10 pb-2">
-          <div
-            role="button"
-            tabIndex={0}
+          <Image
+            src="/images/common/cat_logo.svg"
+            alt="cat logo"
+            width={35}
+            height={30}
             onClick={() => router.push('/')}
             className="cursor-pointer"
-          >
-            <Image
-              src="/images/common/cat_logo.svg"
-              alt="cat logo"
-              width={35}
-              height={30}
-            />
-          </div>
+          />
           <div className="flex items-center gap-5 list-none">
             {extraCategories.map((category) => (
               <li key={category.path}>
@@ -80,14 +81,13 @@ const Header = () => {
                 </button>
               </li>
             ))}
-            <button type="button" onClick={() => router.push('/search')}>
-              <Image
-                src="/images/common/search.svg"
-                alt="search"
-                width={35}
-                height={35}
-              />
-            </button>
+            <Image
+              src="/images/common/search.svg"
+              alt="search"
+              width={35}
+              height={35}
+              onClick={() => router.push('/search')}
+            />
           </div>
         </div>
         <Category />
