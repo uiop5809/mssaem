@@ -2,7 +2,11 @@
 
 import Image from 'next/image'
 import mbtiList from '@/constants/mbtiList'
-import { useBoardListNumber } from '@/service/board/useBoardService'
+import {
+  useBoardListNumber,
+  usePostCategoryBookmark,
+} from '@/service/board/useBoardService'
+import { useState } from 'react'
 
 interface MbtiCategoriesProps {
   selectedMbti: string
@@ -12,6 +16,18 @@ interface MbtiCategoriesProps {
 const MbtiCategories = ({ selectedMbti, setMbti }: MbtiCategoriesProps) => {
   const { data } = useBoardListNumber()
   const totalBoardCount = data?.boardCount || 0
+
+  const { mutate } = usePostCategoryBookmark()
+  const [favorites, setFavorites] = useState<Record<string, boolean>>({})
+
+  const toggleFavorite = (mbti: string) => {
+    setFavorites((prevFavorites) => ({
+      ...prevFavorites,
+      [mbti]: !prevFavorites[mbti],
+    }))
+
+    mutate(mbti)
+  }
 
   return (
     <div className="w-full-vw ml-half-vw px-4% sm:px-8% md:px-13% bg-main3">
@@ -30,6 +46,7 @@ const MbtiCategories = ({ selectedMbti, setMbti }: MbtiCategoriesProps) => {
           <div className="col-span-4 grid grid-cols-4 gap-4">
             {mbtiList.map((mbti, index) => {
               const mbtiCount = (data as any)?.[mbti.toLowerCase()] || 0
+              const isFavorite = favorites[mbti] || false
               return (
                 <div
                   key={index}
@@ -41,12 +58,19 @@ const MbtiCategories = ({ selectedMbti, setMbti }: MbtiCategoriesProps) => {
                   >
                     {mbti} ({mbtiCount})
                   </p>
-                  <Image
-                    src="/images/board/star_empty.svg"
-                    alt="star"
-                    width={16}
-                    height={16}
-                  />
+                  <div
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      toggleFavorite(mbti)
+                    }}
+                  >
+                    <Image
+                      src={`/images/board/${isFavorite ? 'star_fill' : 'star_empty'}.svg`}
+                      alt="star"
+                      width={16}
+                      height={16}
+                    />
+                  </div>
                 </div>
               )
             })}
