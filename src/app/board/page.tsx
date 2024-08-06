@@ -16,6 +16,9 @@ const BoardPage = () => {
   return (
     <>
       <MbtiCategories selectedMbti={mbti} setMbti={setMbti} />
+      <div className="text-title3 text-maindark font-semibold my-5">
+        {mbti === 'all' ? '전체' : mbti} 게시판
+      </div>
       <Container color="purple">
         <div className="text-right">
           <Button
