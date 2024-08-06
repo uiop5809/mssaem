@@ -136,6 +136,7 @@ const config: Config = {
         '54': '212px',
       },
       minWidth: {
+        '20': '80px',
         '67.5': '270px',
       },
       maxWidth: {

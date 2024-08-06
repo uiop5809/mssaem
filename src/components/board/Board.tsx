@@ -38,9 +38,15 @@ const Board = ({ board }: BoardProps) => {
           />
         </div>
         <div className="flex items-center gap-7">
-          <span className="text-caption text-gray2">{createdAt}</span>
-          <p className="text-caption text-gray2">공감 {likeCount}</p>
-          <p className="text-caption text-gray2">댓글 {commentCount}</p>
+          <span className="text-caption text-gray2 whitespace-nowrap">
+            {createdAt}
+          </span>
+          <p className="text-caption text-gray2 whitespace-nowrap">
+            공감 {likeCount}
+          </p>
+          <p className="text-caption text-gray2 whitespace-nowrap">
+            댓글 {commentCount}
+          </p>
         </div>
       </div>
 

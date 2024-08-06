@@ -37,7 +37,7 @@ const MbtiCategories = ({ selectedMbti, setMbti }: MbtiCategoriesProps) => {
                   onClick={() => setMbti(mbti)}
                 >
                   <p
-                    className={`whitespace-nowrap text-gray2 ${selectedMbti === mbti ? 'underline' : ''}`}
+                    className={`whitespace-nowrap text-gray2 min-w-20 ${selectedMbti === mbti ? 'underline' : ''}`}
                   >
                     {mbti} ({mbtiCount})
                   </p>
