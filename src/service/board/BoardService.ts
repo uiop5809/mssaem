@@ -14,9 +14,12 @@ interface BoardPatchProps {
 
 class BoardService extends Service {
   getBoardList({ mbti, page, size }: BoardListProps) {
-    return this.http.get<BoardList>(
-      `/boards/mbti?mbti=${mbti}&page=${page}&size=${size}`,
-    )
+    const url =
+      mbti === 'all'
+        ? `/boards?page=${page}&size=${size}`
+        : `/boards/mbti?mbti=${mbti}&page=${page}&size=${size}`
+
+    return this.http.get<BoardList>(url)
   }
 
   getBoardListNumber() {

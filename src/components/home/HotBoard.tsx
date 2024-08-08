@@ -9,6 +9,8 @@ export interface HotBoardProps {
   hotBoard: HotBoardI
 }
 
+const MAX_CONTENT_LENGTH = 50
+
 const HotBoard = ({ hotBoard }: HotBoardProps) => {
   const {
     title,
@@ -21,6 +23,11 @@ const HotBoard = ({ hotBoard }: HotBoardProps) => {
     memberSimpleInfo,
   } = hotBoard
 
+  const truncatedContent =
+    content.length > MAX_CONTENT_LENGTH
+      ? `${content.substring(0, MAX_CONTENT_LENGTH)}...`
+      : content
+
   return (
     <Container color="purple">
       <div className="flex justify-between">
@@ -28,7 +35,10 @@ const HotBoard = ({ hotBoard }: HotBoardProps) => {
           <Profile user={memberSimpleInfo} />
           <div className="flex flex-col gap-1">
             <p className="text-title3 font-bold">{title}</p>
-            <p className="text-body text-mainblack">{content}</p>
+            <p
+              className="text-body text-mainblack"
+              dangerouslySetInnerHTML={{ __html: truncatedContent }}
+            />
           </div>
           <p className="text-caption text-gray2">{boardMbti}</p>
         </div>

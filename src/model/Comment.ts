@@ -14,7 +14,7 @@ interface CommentI {
 interface CommentList {
   page: number
   totalSize: number
-  result: Comment[]
+  result: CommentI[]
 }
 
 export type { CommentI, CommentList }

@@ -11,12 +11,12 @@ export interface CommentProps {
 
 const Comment = ({ comment }: CommentProps) => {
   const {
-    memberSimpleInfo,
-    createdAt,
-    content,
     likeCount,
-    isAllowed,
+    createdAt,
     isLiked,
+    isAllowed,
+    memberSimpleInfo,
+    content,
   } = comment
 
   const [liked, setLiked] = useState(isLiked)
