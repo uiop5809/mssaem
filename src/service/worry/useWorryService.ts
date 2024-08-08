@@ -1,34 +1,53 @@
 import {
   useMutation,
-  useQuery,
   UseMutationOptions,
+  useQuery,
 } from '@tanstack/react-query'
 import { queryOptions } from './WorryQueries'
-
-interface WorryPatchProps {
-  id: number
-  worry: FormData
-}
+import { WorryPatchProps } from './WorryService'
 
 const useWaitingWorryList = (
   page: number,
   size: number,
   strFromMbti: string,
   strToMbti: string,
-) =>
-  useQuery({
-    ...queryOptions.worryList,
+) => {
+  return useQuery({
     queryKey: ['worryList', page, size, strFromMbti, strToMbti],
     queryFn: () =>
-      queryOptions.worryList.queryFn({ page, size, strFromMbti, strToMbti }),
+      queryOptions.waitingWorryList.queryFn({
+        page,
+        size,
+        strFromMbti,
+        strToMbti,
+      }),
   })
+}
 
-const useWorryDetail = (worryId: number) =>
-  useQuery({
-    ...queryOptions.worryDetail,
+const useSolvedWorryList = (
+  page: number,
+  size: number,
+  strFromMbti: string,
+  strToMbti: string,
+) => {
+  return useQuery({
+    queryKey: ['worryList', page, size, strFromMbti, strToMbti],
+    queryFn: () =>
+      queryOptions.solvedWorryList.queryFn({
+        page,
+        size,
+        strFromMbti,
+        strToMbti,
+      }),
+  })
+}
+
+const useWorryDetail = (worryId: number) => {
+  return useQuery({
     queryKey: ['worryDetail', worryId],
     queryFn: () => queryOptions.worryDetail.queryFn(worryId),
   })
+}
 
 const usePostWorry = () => {
   const mutationFn = (worry: FormData): Promise<void> =>
@@ -72,6 +91,7 @@ const usePatchWorrySolved = () => {
 
 export {
   useWaitingWorryList,
+  useSolvedWorryList,
   useWorryDetail,
   usePostWorry,
   usePatchWorry,

@@ -16,13 +16,13 @@ export interface WorryPatchProps {
 class WorryService extends Service {
   getWaitingWorryList({ page, size, strFromMbti, strToMbti }: WorryListProps) {
     return this.http.get<WorryList>(
-      `/worry-board/waiting/filter&page=${page}&size=${size}&strFromMbti=${strFromMbti}&strToMbti=${strToMbti}`,
+      `/worry-board/waiting/filter?page=${page}&size=${size}&strFromMbti=${strFromMbti}&strToMbti=${strToMbti}`,
     )
   }
 
   getSolvedWorryList({ page, size, strFromMbti, strToMbti }: WorryListProps) {
     return this.http.get<WorryList>(
-      `/worry-board/solved/filter&page=${page}&size=${size}&strFromMbti=${strFromMbti}&strToMbti=${strToMbti}`,
+      `/worry-board/solved/filter?page=${page}&size=${size}&strFromMbti=${strFromMbti}&strToMbti=${strToMbti}`,
     )
   }
 
