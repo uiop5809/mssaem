@@ -2,6 +2,7 @@ import { MBTI } from '@/components/common/Button'
 import { User } from './User'
 
 interface WorryI {
+  id: number
   title: string
   content: string
   memberMbti: MBTI
