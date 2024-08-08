@@ -20,7 +20,7 @@ interface WorryList {
 interface WorryDetail {
   memberSimpleInfo: User
   worryBoardId: number
-  targetMbti: string
+  targetMbti: MBTI
   title: string
   content: string
   createdAt: string

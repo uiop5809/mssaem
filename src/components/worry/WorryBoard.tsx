@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { WorryI } from '@/model/Worry'
+import { useRouter } from 'next/navigation'
 import Button from '../common/Button'
 
 export interface WorryBoardProps {
@@ -11,7 +12,9 @@ export interface WorryBoardProps {
 const MAX_CONTENT_LENGTH = 35
 
 const WorryBoard = ({ worryBoard }: WorryBoardProps) => {
-  const { title, content, memberMbti, targetMbti, createdDate, imgUrl } =
+  const router = useRouter()
+
+  const { id, title, content, memberMbti, targetMbti, createdDate, imgUrl } =
     worryBoard
 
   const truncatedContent =
@@ -20,7 +23,12 @@ const WorryBoard = ({ worryBoard }: WorryBoardProps) => {
       : content
 
   return (
-    <div className="flex justify-between items-center my-7.5">
+    <div
+      className="flex justify-between items-center my-7.5 cursor-pointer"
+      onClick={() => {
+        router.push(`/worry/${id}`)
+      }}
+    >
       <div className="flex flex-col gap-3.5">
         <div className="flex items-center gap-2.5">
           <Button text={memberMbti} color={memberMbti} size="badge" />

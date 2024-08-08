@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import Dropdown from '@/components/worry/Dropdown'
 
-interface MbtiSelectProps {
+export interface MbtiSelectProps {
   strFromMbti: string
   strToMbti: string
   setStrFromMbti: (str: string) => void
