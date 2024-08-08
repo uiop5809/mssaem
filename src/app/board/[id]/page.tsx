@@ -11,6 +11,7 @@ import {
 } from '@/service/board/useBoardService'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
+import CommentList from '@/components/board/CommentList'
 
 const BoardDetail = () => {
   const [mbti, setMbti] = useState<string>('all')
@@ -66,6 +67,8 @@ const BoardDetail = () => {
             </div>
           </>
         )}
+
+        <CommentList boardId={Number(id)} page={0} size={10} />
       </Container>
     </>
   )
