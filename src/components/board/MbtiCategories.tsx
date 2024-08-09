@@ -22,7 +22,7 @@ const MbtiCategories = ({ selectedMbti }: MbtiCategoriesProps) => {
   const [favorites, setFavorites] = useState<Record<string, boolean>>({})
 
   const handleMbtiChange = (mbti: string) => {
-    router.push(`/board?mbti=${mbti}`)
+    router.push(`/board?mbti=${mbti}&page=1`)
   }
 
   const toggleFavorite = (mbti: string) => {
