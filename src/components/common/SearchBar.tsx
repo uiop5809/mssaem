@@ -26,11 +26,11 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
   }
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-5.5 justify-center w-full">
       <select
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
-        className="border border-gray4 rounded-[5px] px-2 py-2.5 text-gray2 cursor-pointer focus:outline-none focus:border-gray4 "
+        className="border border-gray4 rounded-[5px] px-2 py-2.5 text-gray2 cursor-pointer focus:outline-none focus:border-gray4"
       >
         {options.map((option) => (
           <option
@@ -42,14 +42,14 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
           </option>
         ))}
       </select>
-      <div className="relative flex-grow">
+      <div className="relative flex-grow max-w-lg">
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="검색어를 입력해주세요."
-          className="border border-gray4 rounded-[5px] px-2 py-2.5 w-full pr-10 text-gray2 focus:outline-none focus:border-gray4 "
+          className="border border-gray4 rounded-[5px] px-2 py-2.5 w-full pr-10 text-gray2 focus:outline-none focus:border-gray4"
         />
         <button
           type="button"

@@ -4,6 +4,7 @@ import DiscussionBoard from '@/components/discussion/DiscussionBoard'
 import Pagination from '@/components/common/Pagination'
 import { useDiscussionList } from '@/service/discussion/useDiscussionService'
 import { useState } from 'react'
+import SearchBar from '@/components/common/SearchBar'
 
 const DiscussionPage = () => {
   const [page, setPage] = useState<number>(1)
@@ -39,6 +40,10 @@ const DiscussionPage = () => {
           />
         </div>
       )}
+
+      <div className="my-7.5">
+        <SearchBar onSearch={() => {}} />
+      </div>
     </>
   )
 }

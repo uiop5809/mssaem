@@ -5,6 +5,7 @@ import MbtiCategories from '@/components/board/MbtiCategories'
 import Button from '@/components/common/Button'
 import Container from '@/components/common/Container'
 import Pagination from '@/components/common/Pagination'
+import SearchBar from '@/components/common/SearchBar'
 import { useBoardList } from '@/service/board/useBoardService'
 import { useState } from 'react'
 
@@ -54,6 +55,9 @@ const BoardPage = () => {
             />
           </div>
         )}
+        <div className="my-7.5">
+          <SearchBar onSearch={() => {}} />
+        </div>
       </Container>
     </>
   )

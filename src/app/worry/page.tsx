@@ -9,6 +9,7 @@ import {
   useWaitingWorryList,
 } from '@/service/worry/useWorryService'
 import { useState } from 'react'
+import SearchBar from '@/components/common/SearchBar'
 
 const WorryPage = () => {
   const [waitingPage, setWaitingPage] = useState<number>(1)
@@ -103,6 +104,10 @@ const WorryPage = () => {
             />
           </div>
         )}
+
+        <div className="my-7.5">
+          <SearchBar onSearch={() => {}} />
+        </div>
       </Container>
     </div>
   )
