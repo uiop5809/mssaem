@@ -31,7 +31,7 @@ const DiscussionOption = ({
     <button
       type="submit"
       className={clsx(
-        'flex flex-col justify-center items-center border-gray4 border-1 rounded-7.5 gap-2.5 p-4 text-center w-full min-h-54',
+        'flex flex-col justify-center items-center border-gray4 border-1 rounded-7.5 gap-2.5 p-4 text-center w-full min-h-30 sm:min-h-54',
         DiscussionOptionTheme.size[size],
         {
           'bg-main2 text-white': selected,
