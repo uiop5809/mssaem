@@ -1,9 +1,9 @@
-import { MBTI } from '@/components/common/Button'
+import { MBTI, Color } from '@/components/common/Button'
 
 interface ChattingProfileI {
   nickName: string
   mbti: MBTI
-  badge?: string
+  badge?: Color
   profileImgUrl: string
   recent?: string
   lastMessage: string
