@@ -30,19 +30,20 @@ const DiscussionBoard = ({ discussionBoard }: DiscussionBoardProps) => {
         <div className="flex flex-col justify-between gap-5">
           <div className="flex justify-between">
             <Profile user={memberSimpleInfo} />
-            <div className="text-cpation text-gray2">{createdAt}</div>
+            <div className="text-caption text-gray2">{createdAt}</div>
           </div>
-          <div className="flex flex-col gap -1">
+          <div className="flex flex-col gap-1">
             <p className="text-title3 font-bold">{title}</p>
             <p className="text-body text-mainblack">{content}</p>
           </div>
         </div>
 
         <div className="flex flex-col gap-4">
-          <div className="flex justify-between gap-8">
+          <div className="grid grid-cols-2 gap-4">
             {options &&
-              options.map((option: DiscussionOptionI) => (
+              options.map((option: DiscussionOptionI, index: number) => (
                 <DiscussionOption
+                  key={index}
                   discussionOption={option}
                   size="small"
                   onClick={handleDiscussionOptionClick}

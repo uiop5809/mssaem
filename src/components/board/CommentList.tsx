@@ -4,13 +4,13 @@ import { useCommentList } from '@/service/comment/useCommentService'
 import Comment from './Comment'
 
 interface CommentListProps {
-  boardId: number
+  id: number
   page: number
   size: number
 }
 
-const CommentList = ({ boardId, page, size }: CommentListProps) => {
-  const { data } = useCommentList({ boardId, page, size })
+const CommentList = ({ id, page, size }: CommentListProps) => {
+  const { data } = useCommentList({ id, page, size })
 
   return (
     <div className="flex flex-col gap-5">
