@@ -1,42 +1,59 @@
+import React, { useState, useEffect } from 'react'
+
 export interface PaginationProps {
-  itemsCount: number
-  pageSize: number
+  pagesCount: number
   currentPage: number
   onPageChange: (page: number) => void
 }
 
 const Pagination = ({
-  itemsCount,
-  pageSize,
+  pagesCount,
   currentPage,
   onPageChange,
 }: PaginationProps) => {
-  const pagesCount = Math.ceil(itemsCount / pageSize)
-  if (pagesCount === 1) return null
+  const [currentPageGroup, setCurrentPageGroup] = useState<number>(1)
+  const pagesPerGroup = 5
 
-  const pages = Array.from({ length: pagesCount }, (_, i) => i + 1)
+  const totalGroups = Math.ceil(pagesCount / pagesPerGroup)
 
-  const handlePreviousPage = () => {
-    if (currentPage > 1) {
-      onPageChange(currentPage - 1)
+  useEffect(() => {
+    const newPageGroup = Math.ceil(currentPage / pagesPerGroup)
+    setCurrentPageGroup(newPageGroup)
+  }, [currentPage])
+
+  const startPage = (currentPageGroup - 1) * pagesPerGroup + 1
+  const endPage = Math.min(currentPageGroup * pagesPerGroup, pagesCount)
+
+  const pages = Array.from(
+    { length: endPage - startPage + 1 },
+    (_, i) => startPage + i,
+  )
+
+  const handlePreviousGroup = () => {
+    if (currentPageGroup > 1) {
+      const newPageGroup = currentPageGroup - 1
+      setCurrentPageGroup(newPageGroup)
+      onPageChange((newPageGroup - 1) * pagesPerGroup + 1)
     }
   }
 
-  const handleNextPage = () => {
-    if (currentPage < pagesCount) {
-      onPageChange(currentPage + 1)
+  const handleNextGroup = () => {
+    if (currentPageGroup < totalGroups) {
+      const newPageGroup = currentPageGroup + 1
+      setCurrentPageGroup(newPageGroup)
+      onPageChange((newPageGroup - 1) * pagesPerGroup + 1)
     }
   }
 
   return (
     <nav>
       <ul className="flex justify-center items-center gap-3">
-        <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+        <li className={`page-item ${currentPageGroup === 1 ? 'disabled' : ''}`}>
           <button
             type="button"
             className="text-headline text-gray2 font-semibold"
-            onClick={handlePreviousPage}
-            disabled={currentPage === 1}
+            onClick={handlePreviousGroup}
+            disabled={currentPageGroup === 1}
           >
             이전
           </button>
@@ -57,12 +74,16 @@ const Pagination = ({
             </button>
           </li>
         ))}
-        <li className={`${currentPage === pagesCount ? 'disabled' : ''}`}>
+        <li
+          className={`page-item ${
+            currentPageGroup === totalGroups ? 'disabled' : ''
+          }`}
+        >
           <button
             type="button"
             className="text-headline text-gray2 font-semibold"
-            onClick={handleNextPage}
-            disabled={currentPage === pagesCount}
+            onClick={handleNextGroup}
+            disabled={currentPageGroup === totalGroups}
           >
             다음
           </button>

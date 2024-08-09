@@ -8,8 +8,7 @@ export default {
 } as Meta
 
 const Template: StoryFn<PaginationProps> = ({
-  itemsCount,
-  pageSize,
+  pagesCount,
   currentPage: initialCurrentPage,
   onPageChange,
 }: PaginationProps) => {
@@ -22,8 +21,7 @@ const Template: StoryFn<PaginationProps> = ({
 
   return (
     <Pagination
-      itemsCount={itemsCount}
-      pageSize={pageSize}
+      pagesCount={pagesCount}
       currentPage={currentPage}
       onPageChange={handlePageChange}
     />
@@ -32,8 +30,7 @@ const Template: StoryFn<PaginationProps> = ({
 
 export const Primary = Template.bind({})
 Primary.args = {
-  itemsCount: 45,
-  pageSize: 10,
+  pagesCount: 5,
   currentPage: 1,
-  onPageChange: (page: number) => console.log(`Current page: ${page}`),
+  onPageChange: () => {},
 }

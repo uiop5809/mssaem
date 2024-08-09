@@ -66,8 +66,7 @@ const WorryPage = () => {
         {waitingWorryList && (
           <div className="mt-5">
             <Pagination
-              itemsCount={waitingWorryList.totalSize}
-              pageSize={pageSize}
+              pagesCount={waitingWorryList.totalSize}
               currentPage={waitingPage}
               onPageChange={handleWaitingPageChange}
             />

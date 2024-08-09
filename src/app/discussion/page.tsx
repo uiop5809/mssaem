@@ -33,8 +33,7 @@ const DiscussionPage = () => {
       {discussionList && (
         <div className="mt-5">
           <Pagination
-            itemsCount={discussionList.totalSize}
-            pageSize={pageSize}
+            pagesCount={discussionList.totalSize}
             currentPage={page}
             onPageChange={handlePageChange}
           />

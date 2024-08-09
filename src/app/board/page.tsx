@@ -44,12 +44,10 @@ const BoardPage = () => {
             </div>
           ))}
 
-        {/* Pagination 컴포넌트 추가 */}
         {boardList && (
           <div className="mt-5">
             <Pagination
-              itemsCount={boardList.totalSize}
-              pageSize={pageSize}
+              pagesCount={boardList.totalSize}
               currentPage={page}
               onPageChange={handlePageChange}
             />
