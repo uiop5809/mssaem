@@ -15,6 +15,7 @@ const DiscussionDetail = () => {
   const { data: discussionDetail } = useDiscussionDetail(Number(id))
 
   const discussion = discussionDetail && discussionDetail.discussionSimpleInfo
+  const formattedCreatedAt = discussion && discussion.createdAt.split(' ')[0]
 
   return (
     <>
@@ -32,7 +33,7 @@ const DiscussionDetail = () => {
             <div className="flex justify-between my-7.5">
               <Profile user={discussion?.memberSimpleInfo} />
               <div className="flex gap-3.5 text-caption text-gray2">
-                <p>{discussion.createdAt}</p>
+                <p>{formattedCreatedAt}</p>
               </div>
             </div>
 
@@ -50,7 +51,7 @@ const DiscussionDetail = () => {
                     <DiscussionOption
                       discussionOption={option}
                       size="small"
-                      onClick={() => {}}
+                      boardId={Number(id)}
                     />
                   ))}
               </div>

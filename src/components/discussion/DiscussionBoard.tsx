@@ -3,7 +3,6 @@
 import { DiscussionBoardI, DiscussionOptionI } from '@/model/Discussion'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { usePostDiscussionPraticipation } from '@/service/discussion/useDiscussionService'
 import Container from '../common/Container'
 import Profile from '../common/Profile'
 import DiscussionOption from './DiscussionOption'
@@ -27,20 +26,6 @@ const DiscussionBoard = ({ discussionBoard }: DiscussionBoardProps) => {
   const router = useRouter()
   const handleDiscussionBoardClick = () => {
     router.push(`/discussion/${id}`)
-  }
-
-  const { mutate } = usePostDiscussionPraticipation()
-
-  const handleDiscussionOptionClick = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    discussionOptionId: number,
-  ) => {
-    event.stopPropagation()
-
-    mutate({
-      discussionId: id,
-      discussionOptionId,
-    })
   }
 
   const formattedCreatedAt = createdAt.split(' ')[0]
@@ -71,7 +56,7 @@ const DiscussionBoard = ({ discussionBoard }: DiscussionBoardProps) => {
                   key={index}
                   discussionOption={option}
                   size="small"
-                  onClick={(e) => handleDiscussionOptionClick(e, option.id)} // 이벤트 객체를 전달
+                  boardId={id}
                 />
               ))}
           </div>
