@@ -29,11 +29,16 @@ const Pagination = ({
     (_, i) => startPage + i,
   )
 
+  const handlePageChange = (page: number) => {
+    onPageChange(page)
+    window.scrollTo({ top: 0, behavior: 'smooth' }) // 화면을 최상단으로 부드럽게 스크롤
+  }
+
   const handlePreviousGroup = () => {
     if (currentPageGroup > 1) {
       const newPageGroup = currentPageGroup - 1
       setCurrentPageGroup(newPageGroup)
-      onPageChange((newPageGroup - 1) * pagesPerGroup + 1)
+      handlePageChange((newPageGroup - 1) * pagesPerGroup + 1)
     }
   }
 
@@ -41,7 +46,7 @@ const Pagination = ({
     if (currentPageGroup < totalGroups) {
       const newPageGroup = currentPageGroup + 1
       setCurrentPageGroup(newPageGroup)
-      onPageChange((newPageGroup - 1) * pagesPerGroup + 1)
+      handlePageChange((newPageGroup - 1) * pagesPerGroup + 1)
     }
   }
 
@@ -67,7 +72,7 @@ const Pagination = ({
                   ? 'border-pointcolor1 bg-main4 text-maindark'
                   : 'border-transparent'
               }`}
-              onClick={() => onPageChange(page)}
+              onClick={() => handlePageChange(page)}
               aria-current={page === currentPage ? 'page' : undefined}
             >
               {page}
