@@ -1,5 +1,6 @@
 'use client'
 
+import { useSearchParams } from 'next/navigation'
 import Board from '@/components/board/Board'
 import MbtiCategories from '@/components/board/MbtiCategories'
 import Button from '@/components/common/Button'
@@ -7,10 +8,13 @@ import Container from '@/components/common/Container'
 import Pagination from '@/components/common/Pagination'
 import SearchBar from '@/components/common/SearchBar'
 import { useBoardList } from '@/service/board/useBoardService'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const BoardPage = () => {
-  const [mbti, setMbti] = useState<string>('all')
+  const searchParams = useSearchParams()
+  const mbtiQuery = searchParams.get('mbti') || 'all'
+
+  const [mbti, setMbti] = useState<string>(mbtiQuery)
   const [page, setPage] = useState<number>(1)
   const pageSize = 6
 
@@ -20,9 +24,15 @@ const BoardPage = () => {
     setPage(newPage)
   }
 
+  useEffect(() => {
+    if (mbti !== mbtiQuery) {
+      setMbti(mbtiQuery)
+    }
+  }, [mbtiQuery])
+
   return (
     <>
-      <MbtiCategories selectedMbti={mbti} setMbti={setMbti} />
+      <MbtiCategories selectedMbti={mbti} />
       <div className="text-title3 text-maindark font-semibold my-5">
         {mbti === 'all' ? '전체' : mbti} 게시판
       </div>

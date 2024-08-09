@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 const categories = [
   { path: '/', label: 'HOME' },
-  { path: '/board', label: '게시판' },
+  { path: '/board?mbti=all', label: '게시판' },
   { path: '/worry', label: 'M쌤 매칭' },
   { path: '/discussion', label: 'MBTI 과몰입 토론' },
 ]
