@@ -19,7 +19,7 @@ class DiscussionService extends Service {
   }
 
   getDiscussionDetail(id: number) {
-    return this.http.get<DiscussionDetail>(`/discussion/${id}`)
+    return this.http.get<DiscussionDetail>(`/discussions/${id}`)
   }
 
   postDiscussion(discussion: FormData) {

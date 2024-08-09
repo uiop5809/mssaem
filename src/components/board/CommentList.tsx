@@ -10,11 +10,12 @@ interface CommentListProps {
 }
 
 const CommentList = ({ id, page, size }: CommentListProps) => {
-  const { data } = useCommentList({ id, page, size })
+  const { data: commentList } = useCommentList({ id, page, size })
 
   return (
     <div className="flex flex-col gap-5">
-      {data && data.result.map((comment) => <Comment comment={comment} />)}
+      {commentList &&
+        commentList.result.map((comment) => <Comment comment={comment} />)}
     </div>
   )
 }

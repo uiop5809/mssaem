@@ -14,9 +14,14 @@ const DiscussionPage = () => {
       <div className="flex flex-col gap-2.5 sm:gap-16.5">
         {discussionList &&
           discussionList.result.map((discussion) => (
-            <DiscussionBoard key={discussion.id} discussionBoard={discussion} />
+            <>
+              <DiscussionBoard
+                key={discussion.id}
+                discussionBoard={discussion}
+              />
+              <div className="h-[1px] bg-gray4" />
+            </>
           ))}
-        <div className="border text-gray4" />
       </div>
     </>
   )
