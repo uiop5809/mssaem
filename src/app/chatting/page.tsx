@@ -1,13 +1,15 @@
 'use client'
 
+import ChattingInput from '@/components/chatting/ChattingInput'
 import ChattingProfile from '@/components/chatting/ChattingProfile'
-import ChattingProfileI from '@/model/Chatting'
-import Image from 'next/image'
+import Profile from '@/components/common/Profile'
+import { ChattingProfileI } from '@/model/Chatting'
+import { User } from '@/model/User'
 import React, { useEffect, useRef, useState } from 'react'
 
 const Chatting = () => {
-  const [chatRooms] = useState<number[]>([1, 2, 3]) // 예시로 채팅방 3개를 추가
-  const [currentChatRoomId, setCurrentChatRoomId] = useState<number>(1) // 현재 선택된 채팅방
+  const [chatRooms] = useState<number[]>([1, 2, 3])
+  const [currentChatRoomId, setCurrentChatRoomId] = useState<number>(1)
   const [messages, setMessages] = useState<{ [key: number]: string[] }>({})
   const [input, setInput] = useState<string>('')
   const [isConnected, setIsConnected] = useState<boolean>(true)
@@ -20,6 +22,13 @@ const Chatting = () => {
     profileImgUrl: '/images/common/default.svg',
     recent: '5',
     lastMessage: '안녕하세요',
+  }
+
+  const user: User = {
+    profileImgUrl: '/images/common/default.svg',
+    nickName: '유보라',
+    mbti: 'ENFP',
+    badge: '엠비티어른',
   }
 
   useEffect(() => {
@@ -81,8 +90,8 @@ const Chatting = () => {
 
   return (
     <div className="w-full-vw ml-half-vw bg-main3 py-10">
-      <div className="flex h-screen-40 border-7.5  mx-2% sm:mx-6% md:mx-13% bg-white rounded-7.5 shadow-custom-light ">
-        {/* Left Sidebar for Chat Rooms */}
+      <div className="flex h-screen-40 border-7.5 mx-2% sm:mx-6% md:mx-13% bg-white rounded-7.5 shadow-custom-light ">
+        {/* Left Sidebar for 채팅 목록 */}
         <div className="border-r flex flex-col overflow-y-scroll scrollbar-hide">
           <div className="flex items-center p-10 border-b text-title3 font-bold h-27.5">
             채팅 목록
@@ -102,49 +111,26 @@ const Chatting = () => {
           </ul>
         </div>
 
-        {/* Right Content for Chat Messages */}
-        <div className="flex flex-col flex-1 bg-white rounded-br-lg">
+        {/* Right Content for 채팅 내역 */}
+        <div className="flex flex-col flex-1 bg-white rounded-7.5">
           <div className="flex items-center border-b p-4 h-27.5">
-            <Image
-              src="/images/common/default.svg"
-              alt="User"
-              className="rounded-full mr-4"
-              width={50}
-              height={50}
-            />
-            <div>
-              <h3 className="font-bold">유저 님</h3>
-              <p className="text-sm text-gray-300">온라인</p>
-            </div>
+            <Profile user={user} />
           </div>
 
-          <div className="flex-1 overflow-y-auto border-b box-border">
+          <div className="flex-1 overflow-y-auto box-border">
             {messages[currentChatRoomId]?.map((msg, index) => (
-              <div key={index} className="my-2 p-2 border-b box-border">
+              <div key={index} className="my-2 p-2 box-border">
                 {msg}
               </div>
             )) || <p className="p-4">No messages yet.</p>}
           </div>
 
-          <div className="border-t flex items-center box-border p-2">
-            <input
-              type="text"
-              className="flex-1 p-2 box-border"
+          <div className="flex items-center p-6">
+            <ChattingInput
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              onKeyPress={(e) => {
-                if (e.key === 'Enter') {
-                  sendMessage()
-                }
-              }}
-            />
-            <button
-              type="button"
-              className="bg-purple-500 text-white p-2 ml-2"
               onClick={sendMessage}
-            >
-              등록
-            </button>
+            />
           </div>
         </div>
       </div>

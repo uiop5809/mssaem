@@ -9,4 +9,9 @@ interface ChattingProfileI {
   lastMessage: string
 }
 
-export default ChattingProfileI
+interface ChattingMessageI {
+  content: string
+  sendAt: string
+}
+
+export type { ChattingProfileI, ChattingMessageI }
