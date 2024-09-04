@@ -19,6 +19,11 @@ const ChattingProfile = ({
   onClick,
   current,
 }: ChattingProfileProps) => {
+  const truncatedMessage =
+    lastMessage && lastMessage.length > 10
+      ? `${lastMessage.slice(0, 10)}...`
+      : lastMessage
+
   return (
     <div
       className={`flex items-center gap-4.5 cursor-pointer p-4 ${
@@ -48,7 +53,7 @@ const ChattingProfile = ({
             <div className="text-gray2 text-caption">{lastSendAt}</div>
           )}
         </div>
-        <div className="text-body text-maindark">{lastMessage}</div>
+        <div className="text-body text-maindark">{truncatedMessage}</div>
       </div>
     </div>
   )

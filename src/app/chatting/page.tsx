@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 import ChattingInput from '@/components/chatting/ChattingInput'
 import ChattingProfile from '@/components/chatting/ChattingProfile'
@@ -19,8 +19,19 @@ const Chatting = () => {
   const [input, setInput] = useState('')
   const userInfo = useRecoilValue(userInfoState)
   const { connectSocket, socketRefs } = useWebSocket()
-
   const [messages, setMessages] = useState<ChattingMessageI[]>([])
+  const messageListRef = useRef<HTMLDivElement>(null) // 메시지 리스트의 ref 추가
+
+  const formatAMPM = (date: Date) => {
+    let hours = date.getHours()
+    let minutes: number | string = date.getMinutes()
+    const ampm = hours >= 12 ? '오후' : '오전'
+    hours %= 12
+    hours = hours || 12
+    minutes = minutes < 10 ? `0${minutes}` : minutes
+    const formattedTime = `${ampm} ${hours}:${minutes}`
+    return formattedTime
+  }
 
   // 1. 메시지 수신 핸들러 함수
   const handleWebSocketMessage = (newMessage: ChattingMessageI) => {
@@ -138,7 +149,7 @@ const Chatting = () => {
         ...prevMessages,
         {
           message: input,
-          timestamp: new Date().toISOString(),
+          timestamp: formatAMPM(new Date()),
           memberId: userInfo?.id?.toString() || '',
         },
       ])
@@ -167,10 +178,20 @@ const Chatting = () => {
     }
   }
 
+  useEffect(() => {
+    if (messageListRef.current) {
+      messageListRef.current.scrollTop = messageListRef.current.scrollHeight
+    }
+  }, [messages])
+
   return (
-    <div className="w-full-vw ml-half-vw bg-main3 py-10">
-      <div className="flex h-screen-40 border-7.5 mx-2% sm:mx-6% md:mx-13% bg-white rounded-7.5 shadow-custom-light">
-        <div className="border-r flex flex-col overflow-y-scroll scrollbar-hide">
+    <div className="w-full-vw h-screen ml-half-vw bg-main3 py-10">
+      <div className="flex h-full border-7.5 mx-2% sm:mx-6% md:mx-13% bg-white rounded-7.5 shadow-custom-light">
+        {/* 채팅 목록 리스트 */}
+        <div
+          className="border-r flex flex-col overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300"
+          style={{ maxHeight: '100%' }}
+        >
           <div className="flex items-center p-10 border-b text-title3 font-bold h-27.5">
             채팅 목록
           </div>
@@ -193,6 +214,7 @@ const Chatting = () => {
           </ul>
         </div>
 
+        {/* 메시지 리스트 */}
         <div className="flex flex-col flex-1 bg-white rounded-7.5">
           <div className="flex items-center border-b p-4 h-27.5">
             {currentChatRoomId && (
@@ -205,7 +227,13 @@ const Chatting = () => {
               </button>
             )}
           </div>
-          <div className="flex-1 overflow-y-auto box-border">
+
+          {/* 메시지 리스트가 일정 높이를 넘으면 스크롤 */}
+          <div
+            ref={messageListRef}
+            className="flex-1 overflow-y-auto p-2 scrollbar-thin scrollbar-thumb-gray-300"
+            style={{ maxHeight: '100%' }}
+          >
             {messages.length > 0 ? (
               messages.map((msg, index) => {
                 const currentRoom =
@@ -214,7 +242,7 @@ const Chatting = () => {
                     (room) => room.chatRoomId === currentChatRoomId,
                   )
                 return (
-                  <div key={index} className="my-2 p-2 box-border">
+                  <div key={index} className="my-2 p-1 box-border">
                     <ChattingMessage
                       other={currentRoom!!.memberSimpleInfo}
                       msg={msg}
@@ -226,6 +254,7 @@ const Chatting = () => {
               <p className="p-4">No messages yet.</p>
             )}
           </div>
+
           <div className="flex items-center p-6">
             <ChattingInput
               value={input}
